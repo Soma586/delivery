@@ -1,19 +1,114 @@
 import { StatusBar } from 'expo-status-bar';
+import { useCallback } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen'
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import SignIn from './pages/signIn/index'
+import SignUp from './pages/signup';
+
+
+
+//SplashScreen.preventAutoHideAsync()
+
+
+
+
+
+
+// const Test = () => {
+
+//   const [fontsLoaded, fontError] = useFonts({
+//     'Poppins': require('./assets/Poppins/Poppins-Regular.ttf'),
+//   });
+
+//   const onLayoutRootView = useCallback(async () => {
+//     if (fontsLoaded || fontError) {
+//       await SplashScreen.hideAsync();
+//     }
+//   }, [fontsLoaded, fontError]);
+
+//   if (!fontsLoaded && !fontError) {
+//     return null;
+//   }
+//   return (
+//     <View style={styles.container} onLayout={onLayoutRootView}>
+
+//       <Image
+//       source={require('./assets/Logo.png')}
+//       />
+//       <Text style={{fontFamily: 'Poppins'}} >
+//         Live happier and healthier by learning the fundamentals of meditation and mindfulness</Text>
+
+//         <View style={styles.imagePlayground}>
+
+//           <Image
+//           source={require('./assets/Background.png')}
+//           style={styles.imageBG}
+//           />
+//         {/* <Image
+//         source={require('./assets/Yoga.png')}
+//           /> */}
+
+//          <Image
+//         source={require('./assets/Yoga.png')}
+//           />
+
+//         </View>
+     
+//     </View>
+//   );
+
+// }
 
 export default function App() {
-  return (
-    <View style={styles.container}>
 
-      <Image
-      source={require('./assets/Logo.png')}
-      />
-      <Text>Live happier and healthier by learning the fundamentals of meditation and mindfulness</Text>
-      <Image
-      source={require('./assets/Yoga.png')}
-      />
-    </View>
-  );
+
+
+
+  function SettingsScreen() {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text>Thank you for checking out this App!</Text>
+        <Text>Developed by Tarik Mulholland</Text>
+
+      
+      </View>
+    );
+  }
+
+
+  const Tab = createBottomTabNavigator()
+
+
+
+  const Tabs = () => {
+
+
+    return (
+      <Tab.Navigator>
+        <Tab.Screen name="test" component={SignIn}/>
+        <Tab.Screen name="testd" component={SettingsScreen}/>
+        <Tab.Screen name="testdd" component={SettingsScreen}/>
+        <Tab.Screen name="SignUp" component={SignUp}/>
+      </Tab.Navigator>
+
+    )
+
+  }
+
+
+  return (
+
+    <NavigationContainer>
+
+      <Tabs/>
+    </NavigationContainer>
+  )
+
+ 
 }
 
 const styles = StyleSheet.create({
@@ -26,5 +121,14 @@ const styles = StyleSheet.create({
   },
   logo: {
     height: 200
+  },
+  imagePlayground: {
+    position: 'relative',
+    width: '100%'
+  },
+  imageBG : {
+    position: 'absolute',
+    height : 800,
+    width: '100%'
   }
 });
