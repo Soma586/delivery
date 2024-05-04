@@ -8,6 +8,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import SignIn from './pages/signIn/index'
 import SignUp from './pages/signup';
+import DiscoverItem from './components/discoverItem';
+import MenuItem from './components/MenuItem';
 
 
 
@@ -80,6 +82,22 @@ export default function App() {
   }
 
 
+
+  const SandBox = () => {
+
+
+    return (
+
+      <View>
+          <DiscoverItem/>
+          <MenuItem/>
+
+
+      </View>
+    )
+  }
+
+
   const Tab = createBottomTabNavigator()
 
 
@@ -89,10 +107,12 @@ export default function App() {
 
     return (
       <Tab.Navigator>
+        <Tab.Screen name="SandBox" component={SandBox}/>
         <Tab.Screen name="test" component={SignIn}/>
         <Tab.Screen name="testd" component={SettingsScreen}/>
         <Tab.Screen name="testdd" component={SettingsScreen}/>
         <Tab.Screen name="SignUp" component={SignUp}/>
+        
       </Tab.Navigator>
 
     )
