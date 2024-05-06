@@ -10,6 +10,7 @@ import SignIn from './pages/signIn/index'
 import SignUp from './pages/signup';
 import DiscoverItem from './components/discoverItem';
 import MenuItem from './components/MenuItem';
+import FilterPage from './pages/filters';
 
 
 
@@ -107,6 +108,7 @@ export default function App() {
 
     return (
       <Tab.Navigator>
+         <Tab.Screen name="filter" component={FilterPage}/>
         <Tab.Screen name="SandBox" component={SandBox}/>
         <Tab.Screen name="test" component={SignIn}/>
         <Tab.Screen name="testd" component={SettingsScreen}/>
