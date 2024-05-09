@@ -1,10 +1,12 @@
 import { useState } from "react"
 import {View, Text, TouchableHighlight, StyleSheet} from 'react-native'
-import { TouchableOpacity } from "react-native-gesture-handler"
+import RangeSlider, { Slider } from 'react-native-range-slider-expo';
+import {Ionicons, FlatList} from '@expo/vector-icons'
+import CTA from "../../components/CTA";
 
 
 
-
+//todo see if you can make your own slider 
 
 
 const CategorieButton = ({label}) => {
@@ -28,13 +30,33 @@ const CategorieButton = ({label}) => {
 
 
 
+const OptionButton = ( {label ="Free Delivery"}) => {
+
+
+    return (
+
+        <TouchableHighlight style={styles.optionBuff}>
+            <View style={styles.optionButton}>
+            <Text>{label}</Text>
+
+            <Ionicons name={"checkmark-sharp"} size={30}/>
+            </View>
+        </TouchableHighlight>
+    )
+
+}
+
+
+
 
 const FilterPage = () => {
 
 
     const [ list, setList] = useState(['vegan', 'Asian', 'Pizza', 'Gourment', 'Mexican', 'Soup'])
 
-
+    const [fromValue, setFromValue] = useState(0);
+     const [toValue, setToValue] = useState(0);
+     const [value, setValue] = useState(0);
 
 
     const displayButtons = list.map((item) => {
@@ -67,6 +89,27 @@ const FilterPage = () => {
         <View style={styles.priceRange}>
             <Text>Price Range</Text>
 
+
+           
+                    <Slider min={0} max={140} step={4}
+                         valueOnChange={value => setValue(value)}
+                         initialValue={12}
+                         knobColor='red'
+                         //valueLabelsBackgroundColor='black'
+                         inRangeBarColor='purple'
+                         outOfRangeBarColor='orange'
+                    />
+        </View>
+
+        <View style={styles.option}>
+            <Text>Option</Text>
+
+            {/* <OptionButton/> */}
+            <OptionButton/>
+        </View>
+
+        <View>
+            <CTA title={"Search"}/>
         </View>
 
 
@@ -112,6 +155,17 @@ const styles = StyleSheet.create({
     priceRange : {
         flex : 6,
 
+    },
+    option: {
+        flex : 6
+    },
+    optionBuff: {
+        height : 200,
+    },
+    optionButton : {
+        flex : 1,
+        justifyContent : 'space-between',
+        flexDirection : 'row'
     }
 
     // button: {

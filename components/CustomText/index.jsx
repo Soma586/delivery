@@ -11,12 +11,13 @@ import { Text, StyleSheet } from 'react-native';
 const loadCustomFonts = async () => {
     await Font.loadAsync({
         'open-sans-regular': require('../../assets/Open_Sans/static/OpenSans-Regular.ttf'),
-        'open-sans-semi-bold' : require('../../assets/Open_Sans/static/OpenSans-SemiBold.ttf')
+        'open-sans-semi-bold' : require('../../assets/Open_Sans/static/OpenSans-SemiBold.ttf'),
+        'loraBold' : require('../../assets/Lora/static/Lora-Bold.ttf')
         // Load other Open Sans font weights if needed
     });
 }
 
-const CustomText = ({ text, font , size = 14}) => {
+const CustomText = ({ text, font , size = 14, color = "black"}) => {
     const [fontLoaded, setFontLoaded] = useState(false);
 
     useEffect(() => {
@@ -28,7 +29,7 @@ const CustomText = ({ text, font , size = 14}) => {
     }, []);
 
     return (
-        <Text style={[styles[font]], {fontSize : size}}>
+        <Text style={[styles[font]], {fontSize : size, color : color} }>
             {text}
         </Text>
     );
@@ -44,6 +45,9 @@ const styles = StyleSheet.create({
     },
     ssBold : {
         fontFamily : 'open-sans-semi-bold'
+    },
+    loraBold : {
+        fontFamily : 'loraBold'
     }
 });
 

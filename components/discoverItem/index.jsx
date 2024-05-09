@@ -1,16 +1,17 @@
 import { TouchableHighlight, Text, StyleSheet, ImageBackground, View } from "react-native"
 import { FontAwesome } from "@expo/vector-icons"
+import CustomText from "../CustomText"
 
 
 
-const DiscoverItem = ({restaurant, rating}) => {
+const DiscoverItem = ({restaurant ="mash Burgers", rating ="4.5", index }) => {
 
 
 
 
     return (
 
-        <TouchableHighlight>
+        <TouchableHighlight style={index % 2 !== 0 ? styles.secondColumn : null}>
             
             <ImageBackground
             source={require('../../assets/burger.webp')}
@@ -22,14 +23,15 @@ const DiscoverItem = ({restaurant, rating}) => {
 
                 <View style={styles.itemDetails}>
                 <Text style={styles.itemText}>
-                    Smash Burgers
+                    {/* {restaurant} */}
+                    <CustomText text={restaurant} font={"sans"} size={17} color="white"/>
                 </Text> 
 
 
                     <View>
                         <FontAwesome name="star" size={20} color="white"/>
                         <Text style={styles.itemText}>
-                        4.5
+                            <CustomText text={rating} size={12} color="white" font="sans"/>
                         </Text>
                     </View>
               
@@ -55,7 +57,8 @@ const styles = StyleSheet.create({
 
     },
     itemText : {
-        color: 'white'
+        color: 'white',
+        fontFamily : 'open'
     },
     itemDetails : {
        // backgroundColor: 'rgba(0, 0, 0, 0.5)',
@@ -63,7 +66,11 @@ const styles = StyleSheet.create({
         position :'absolute',
         bottom : 10,
         left : 10
+    },
+    secoundColumn : {
+        marginTop : 30
     }
+
 })
 
 export default DiscoverItem

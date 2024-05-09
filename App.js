@@ -11,6 +11,7 @@ import SignUp from './pages/signup';
 import DiscoverItem from './components/discoverItem';
 import MenuItem from './components/MenuItem';
 import FilterPage from './pages/filters';
+import SearchPage from './pages/search';
 
 
 
@@ -108,6 +109,7 @@ export default function App() {
 
     return (
       <Tab.Navigator>
+         <Tab.Screen name="Search" component={SearchPage}/>
          <Tab.Screen name="filter" component={FilterPage}/>
         <Tab.Screen name="SandBox" component={SandBox}/>
         <Tab.Screen name="test" component={SignIn}/>
