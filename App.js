@@ -12,6 +12,7 @@ import DiscoverItem from './components/discoverItem';
 import MenuItem from './components/MenuItem';
 import FilterPage from './pages/filters';
 import SearchPage from './pages/search';
+import RestaurantPage from './pages/restaurantPage';
 
 
 
@@ -109,13 +110,14 @@ export default function App() {
 
     return (
       <Tab.Navigator>
+        <Tab.Screen name="Rest" component={RestaurantPage}/>
          <Tab.Screen name="Search" component={SearchPage}/>
          <Tab.Screen name="filter" component={FilterPage}/>
         <Tab.Screen name="SandBox" component={SandBox}/>
         <Tab.Screen name="test" component={SignIn}/>
-        <Tab.Screen name="testd" component={SettingsScreen}/>
+        {/* <Tab.Screen name="testd" component={SettingsScreen}/>
         <Tab.Screen name="testdd" component={SettingsScreen}/>
-        <Tab.Screen name="SignUp" component={SignUp}/>
+        <Tab.Screen name="SignUp" component={SignUp}/> */}
         
       </Tab.Navigator>
 
