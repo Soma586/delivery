@@ -12,7 +12,8 @@ const loadCustomFonts = async () => {
     await Font.loadAsync({
         'open-sans-regular': require('../../assets/Open_Sans/static/OpenSans-Regular.ttf'),
         'open-sans-semi-bold' : require('../../assets/Open_Sans/static/OpenSans-SemiBold.ttf'),
-        'loraBold' : require('../../assets/Lora/static/Lora-Bold.ttf')
+        'loraBold' : require('../../assets/Lora/static/Lora-Bold.ttf'),
+        'open-sans-bold' :  require('../../assets/Open_Sans/static/OpenSans-Bold.ttf'),
         // Load other Open Sans font weights if needed
     });
 }
@@ -42,6 +43,9 @@ const styles = StyleSheet.create({
     loaded: {
        // fontFamily: 'open-sans-regular'
        fontFamily: 'open-sans-semi-bold'
+    },
+    sansBold : {
+        fontFamily : 'open-sans-bold'
     },
     ssBold : {
         fontFamily : 'open-sans-semi-bold'

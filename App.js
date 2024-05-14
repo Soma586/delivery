@@ -13,6 +13,7 @@ import MenuItem from './components/MenuItem';
 import FilterPage from './pages/filters';
 import SearchPage from './pages/search';
 import RestaurantPage from './pages/restaurantPage';
+import OrderPage from './pages/order';
 
 
 
@@ -110,6 +111,7 @@ export default function App() {
 
     return (
       <Tab.Navigator>
+        <Tab.Screen name="Order" component={OrderPage}/>
         <Tab.Screen name="Rest" component={RestaurantPage}/>
          <Tab.Screen name="Search" component={SearchPage}/>
          <Tab.Screen name="filter" component={FilterPage}/>
