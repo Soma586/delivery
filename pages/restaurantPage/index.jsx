@@ -34,35 +34,35 @@ const RestaurantPage = ({address ="tesing", timeSlot="12pm-4pm"}) => {
     const [featureList, setFeatureList] = useState([
         {
             dishName : "naruto",
-            price : "10.99"
+            price : 10.99
         },
         {
             dishName : "one piece",
-            price : "10.99"
+            price : 10.99
         },
         {
             dishName : "ramen",
-            price : "10.99"
+            price : 8.99
         },
         {
             dishName : "burrito",
-            price : "10.99"
+            price : 5.99
         },
         {
             dishName : "sandwich",
-            price : "10.99"
+            price : 11.50
         },
         {
             dishName : "pokemon",
-            price : "10.99"
+            price : 7.11
         },
         {
             dishName : "blue lock",
-            price : "10.99"
+            price : 10.11
         },
         {
             dishName : "pizza",
-            price : "10.99"
+            price : 15.99
         },
     ])
 
@@ -144,7 +144,7 @@ const RestaurantPage = ({address ="tesing", timeSlot="12pm-4pm"}) => {
 
                     {featureList.map((item, index) => (
                         <View>
-                            <MenuItem title={item.dishName} />
+                            <MenuItem title={item.dishName} price={item.price}/>
                         </View>
                     ))}
                     </View>

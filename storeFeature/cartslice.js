@@ -1,6 +1,22 @@
 import  { createSlice, nanoid } from '@reduxjs/toolkit'
 
 
+
+
+const calculateTotal = (amount, currency="USD") => {
+
+    let num = Intl.NumberFormat('en-US', 
+	{ 
+	style: 'currency', 
+	currency: currency,
+	minimumFractionDigits: 2 // Adjust this based on your currency's decimal requirement
+	})
+	.format(amount); 
+    console.log(num)
+
+    return num
+}
+
 const initialState = {
 
 //     food : [ 
@@ -8,9 +24,12 @@ const initialState = {
 //         {id : 2, text : "hell"}
 // ]
 food : [ 
-    {id : 1, data : { title : 'poke', price : '11', quantity : 1}}, 
-    {id : 2, data : { title : 'pokeaa', price : '11', quantity : 1}}
-]
+    // {id : 1, data : { title : 'poke', price : 11.99, quantity : 1}}, 
+    // {id : 2, data : { title : 'pokeaa', price : 12.99, quantity : 1}}
+],
+value : '',
+total : 0,
+
 }
 
 //let map = new Map()
@@ -38,7 +57,8 @@ export const cartSlice = createSlice({
             });
           }
 
-
+          //state.total = state.total + calculateTotal(action.payload.price)
+          state.total += action.payload.price
 
             //state.food.push(food)
         },
@@ -54,6 +74,8 @@ export const cartSlice = createSlice({
           state.food.splice(index, 1);
         }
       }
+
+      state.total -= calculateTotal(action.payload.price)
         }
     }
 })

@@ -3,6 +3,7 @@ import CustomText from "../../components/CustomText";
 import { AntDesign } from "@expo/vector-icons";
 import { useSelector, useDispatch } from "react-redux";
 import { addFood, removeFood } from "../../storeFeature/cartslice";
+import CTA from "../../components/CTA";
 
 const CheckoutItem = ({ dishName ="hello", price= "$19.99" , quantity = 1}) => {
 
@@ -63,6 +64,9 @@ const OrderPage = () => {
             console.log(state)
             return state.food})
 
+
+        const subTotal = useSelector((state) => state.total)
+
        // console.log(food)
 
   return (
@@ -89,7 +93,7 @@ const OrderPage = () => {
       <View style={styles.invoice}>
         <CustomText text={"SubTotal"} font={"sans"} size={15} />
 
-        <CustomText text={"text"} font={"sans"} size={15} />
+        <CustomText text={`$ ${subTotal}`} font={"sans"} size={15} />
       </View>
       <View style={styles.invoice}>
         <CustomText text={"SubTotal"} font={"sans"} size={15} />
@@ -106,9 +110,12 @@ const OrderPage = () => {
 
         <CustomText text={"To Pay"} font={"sansBold"} size={17} />
 
-        <CustomText text={"$ 30.00"} font={"sansBold"} size={17} />
+        <CustomText text={`$ ${subTotal}` } font={"sansBold"} size={17} />
 
       </View>
+
+
+      <CTA title={"Checkout"}/>
       </View>
     </View>
   );

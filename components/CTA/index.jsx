@@ -30,7 +30,8 @@ const styles = StyleSheet.create({
         //color : 'white',
         backgroundColor : '#6555FF',
         width: '100%',
-        alignItems: 'center'
+        alignItems: 'center',
+        borderRadius : 5,
         //backgroundColor : 'red'
     }
 })

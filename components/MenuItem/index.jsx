@@ -6,7 +6,7 @@ import { addFood } from '../../storeFeature/cartslice'
 
 
 
-const MenuItem = ({title= "Dish name", image, detail="lorem ipsum", price="14.90"}) => {
+const MenuItem = ({title= "Dish name", image, detail="lorem ipsum", price=14.90}) => {
 
 
 
