@@ -1,13 +1,21 @@
-import { View, Image, Text, StyleSheet } from 'react-native'
+import { View, Image, Text, StyleSheet, TouchableHighlight } from 'react-native'
 import { AntDesign } from '@expo/vector-icons'
 import CustomText from '../CustomText'
-
+import { useDispatch } from 'react-redux'
+import { addFood } from '../../storeFeature/cartslice'
 
 
 
 const MenuItem = ({title= "Dish name", image, detail="lorem ipsum", price="14.90"}) => {
 
 
+
+    const dispatch = useDispatch()
+
+    const addToCart = () => {
+
+        dispatch(addFood({ title, price}))
+    }
 
     return (
         <View style={styles.test}>
@@ -37,9 +45,12 @@ const MenuItem = ({title= "Dish name", image, detail="lorem ipsum", price="14.90
 
             </View>
 
-            <View style={styles.menuIcon}>
+            <TouchableHighlight 
+            style={styles.menuIcon}
+            onPress={addToCart}
+            >
                 <AntDesign name={'pluscircle'} color={"purple"} size={30}/>
-            </View>
+            </TouchableHighlight>
 
         </View>
         </View>

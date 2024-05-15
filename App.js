@@ -3,6 +3,8 @@ import { useCallback } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen'
+import { Provider } from 'react-redux';
+import { store } from './store';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -14,6 +16,7 @@ import FilterPage from './pages/filters';
 import SearchPage from './pages/search';
 import RestaurantPage from './pages/restaurantPage';
 import OrderPage from './pages/order';
+
 
 
 
@@ -130,10 +133,13 @@ export default function App() {
 
   return (
 
+
+    <Provider store={store}>
     <NavigationContainer>
 
       <Tabs/>
     </NavigationContainer>
+    </Provider>
   )
 
  

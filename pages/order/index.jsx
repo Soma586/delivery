@@ -1,10 +1,26 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableHighlight} from "react-native";
 import CustomText from "../../components/CustomText";
 import { AntDesign } from "@expo/vector-icons";
-
+import { useSelector, useDispatch } from "react-redux";
+import { addFood, removeFood } from "../../storeFeature/cartslice";
 
 const CheckoutItem = ({ dishName ="hello", price= "$19.99" , quantity = 1}) => {
 
+
+
+    const dispatch = useDispatch()
+
+
+
+    const addToCart = () => {
+
+        dispatch(addFood({title : dishName, price }))
+    }
+
+    const decreaseToCart = () => {
+
+        dispatch(removeFood({title : dishName}))
+    }
 
     return ( 
         <View style={styles.invoice}>
@@ -19,11 +35,19 @@ const CheckoutItem = ({ dishName ="hello", price= "$19.99" , quantity = 1}) => {
             </View>
 
             <View  style={{width : 100, flexDirection : 'row', alignItems : 'center', justifyContent : 'space-between'}}>
-                    <AntDesign name={"minuscircleo"} size={25}/>
+
+                <TouchableHighlight onPress={decreaseToCart}>
+                <AntDesign name={"minuscircleo"} size={25}/>
+                </TouchableHighlight>
+                    
+                    
 
                        <CustomText text={quantity} font={"loaded"} />
 
-                    <AntDesign name={"pluscircle"} size={25} color="purple"/>
+                    <TouchableHighlight onPress={addToCart}>
+                        <AntDesign name={"pluscircle"} size={25} color="purple"/>
+                    </TouchableHighlight>
+                    
                 </View>
 
 
@@ -33,6 +57,14 @@ const CheckoutItem = ({ dishName ="hello", price= "$19.99" , quantity = 1}) => {
 
 
 const OrderPage = () => {
+
+
+        const food = useSelector( (state) => {
+            console.log(state)
+            return state.food})
+
+       // console.log(food)
+
   return (
     <View style={styles.orderContainer}>
 
@@ -43,7 +75,10 @@ const OrderPage = () => {
 
 
 
-      <CheckoutItem/>
+      {/* <CheckoutItem/> */}
+      {food.map((item) => {
+          return <CheckoutItem dishName={item.data.title} quantity={item.data.quantity}/>
+      })}
       </View>
 
 

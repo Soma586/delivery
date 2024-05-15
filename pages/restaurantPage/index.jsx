@@ -37,31 +37,31 @@ const RestaurantPage = ({address ="tesing", timeSlot="12pm-4pm"}) => {
             price : "10.99"
         },
         {
-            dishName : "naruto",
+            dishName : "one piece",
             price : "10.99"
         },
         {
-            dishName : "naruto",
+            dishName : "ramen",
             price : "10.99"
         },
         {
-            dishName : "naruto",
+            dishName : "burrito",
             price : "10.99"
         },
         {
-            dishName : "naruto",
+            dishName : "sandwich",
             price : "10.99"
         },
         {
-            dishName : "naruto",
+            dishName : "pokemon",
             price : "10.99"
         },
         {
-            dishName : "naruto",
+            dishName : "blue lock",
             price : "10.99"
         },
         {
-            dishName : "naruto",
+            dishName : "pizza",
             price : "10.99"
         },
     ])
@@ -144,7 +144,7 @@ const RestaurantPage = ({address ="tesing", timeSlot="12pm-4pm"}) => {
 
                     {featureList.map((item, index) => (
                         <View>
-                            <MenuItem />
+                            <MenuItem title={item.dishName} />
                         </View>
                     ))}
                     </View>
