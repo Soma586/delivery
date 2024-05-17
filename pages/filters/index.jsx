@@ -78,11 +78,11 @@ const FilterPage = () => {
         <CustomText text={"Reset"} size={18} font={"sans"}/>
         </View>
        
-        {/* <Text>Reset</Text> */}
+       
       </View>
 
       <View style={styles.categoriesContainer}>
-        {/* <Text>Categories</Text> */}
+        
         <CustomText text={"Categories"} font={"sansBold"} color={grey}/>
 
         <View style={{flexDirection: "row", flexWrap: "wrap" }}>
@@ -91,9 +91,9 @@ const FilterPage = () => {
       </View>
 
       <View style={styles.priceRange}>
-        {/* <Text>Price Range</Text> */}
+        
         <CustomText text={"Price Range"} font={"sansBold"} color={grey}/>
-
+       
         <Slider
           min={0}
           max={140}
@@ -108,10 +108,10 @@ const FilterPage = () => {
       </View>
 
       <View style={styles.option}>
-        {/* <Text>Option</Text> */}
+       
         <CustomText text={"options"} font={"sansBolrd"} color={grey}/>
 
-        {/* <OptionButton/> */}
+        
         {displayOptions}
       </View>
 
@@ -133,11 +133,13 @@ const styles = StyleSheet.create({
    // height: 100,
   },
   filterHeight: {
-    height: "100%",
-    paddingHorizontal : 20
+    //height: "100%",
+    paddingHorizontal : 20,
+    flex: 1,
+    justifyContent : 'space-around'
   },
   categoriesContainer: {
-    flex: 3,
+    //flex: 3,
   },
   categoryButton: {
     borderRadius: 16,
@@ -153,13 +155,17 @@ const styles = StyleSheet.create({
     // minWidth: 70
   },
   priceRange: {
-    flex: 6,
+    //flex: 6,
+    //marginBottom : 80
+    paddingBottom : 100
   },
   option: {
-    flex: 6,
+    //flex: 6,
+    height : 300
   },
   optionBuff: {
-    height: 200,
+    //height: 200,
+    
   },
   optionButton: {
     //flex: 1,
