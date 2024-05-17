@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import { useCallback } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { useCallback, useState, useRef } from 'react';
+import { StyleSheet, Text, View, Image, Dimensions, Animated } from 'react-native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen'
 import { Provider } from 'react-redux';
@@ -20,9 +20,9 @@ import OrderPage from './pages/order';
 import CheckoutPage from './pages/checkout';
 import Success from './pages/success';
 import { Ionicons, FontAwesome5, AntDesign, Feather} from '@expo/vector-icons'
+import Slider from '@react-native-community/slider';
 
-
-
+//import RangeSlider, { Slider } from "react-native-range-slider-expo";
 //SplashScreen.preventAutoHideAsync()
 
 
@@ -79,6 +79,60 @@ export default function App() {
 
 
 
+
+  function Test() {
+
+    const [fromValue, setFromValue] = useState(0);
+    const [toValue, setToValue] = useState(0);
+    const [value, setValue] = useState(0);
+
+
+    const animatedValue = useRef(new Animated.Value(0)).current;
+    const [layoutWidth, setLayoutWidth] = useState(0);
+  
+    const onValueChange = (value) => {
+      setValue(value);
+      animatedValue.setValue(value);
+    };
+
+    
+    return (
+         <View style={styles.container}>
+        
+
+        <View
+        style={styles.sliderContainer}
+        onLayout={(event) => setLayoutWidth(event.nativeEvent.layout.width)}
+      >
+        <Animated.View
+          style={[
+            styles.valueContainer,
+            {
+              left: animatedValue.interpolate({
+                inputRange: [0, 100],
+                outputRange: [0, layoutWidth - 25], // 40 is an approximate width of the value container
+                extrapolate: 'clamp'
+              }),
+            },
+          ]}
+        >
+          <Text style={styles.valueText}>{Math.floor(value)}</Text>
+        </Animated.View>
+
+
+              <Slider
+  style={{width:200, height: 40}}
+  onValueChange={onValueChange}
+  minimumValue={0}
+  maximumValue={100}
+  minimumTrackTintColor="blue"
+  maximumTrackTintColor="green"
+  value={value}
+/>
+         </View>
+         </View>
+    );
+  }
 
   function SettingsScreen() {
     return (
@@ -159,6 +213,15 @@ export default function App() {
             <Feather name="bell" size={24}  color={color}/>
           )}}
         />
+
+      <Tab.Screen 
+         name="test" 
+         component={Test}
+         options={{
+          tabBarIcon: ({color}) => (
+            <Feather name="bell" size={24}  color={color}/>
+          )}}
+        />
         {/* <Tab.Screen name="SandBox" component={SandBox}/>
         <Tab.Screen name="test" component={SignIn}/> */}
         {/* <Tab.Screen name="testd" component={SettingsScreen}/>
@@ -211,5 +274,16 @@ const styles = StyleSheet.create({
     position: 'absolute',
     height : 800,
     width: '100%'
-  }
+  },
+  sliderContainer: {
+    width: 200,
+    position: 'relative',
+    height: 40,
+  },
+  valueContainer: {
+    position: 'absolute',
+    top: -25,
+    width: 30,
+    alignItems: 'center',
+  },
 });

@@ -1,12 +1,12 @@
 import _ from 'lodash'
-import { useState } from "react";
-import { View, Text, TouchableHighlight, StyleSheet } from "react-native";
-import RangeSlider, { Slider } from "react-native-range-slider-expo";
+import { useState, useRef } from "react";
+import { View, Text, TouchableHighlight, StyleSheet,  Animated} from "react-native";
+//import RangeSlider, { Slider } from "react-native-range-slider-expo";
 import { Ionicons, FlatList } from "@expo/vector-icons";
 import CTA from "../../components/CTA";
 import CustomText from "../../components/CustomText";
 import { blue, purple } from "../../utility";
-
+import Slider from '@react-native-community/slider';
 //todo see if you can make your own slider
 
 const grey = '#C7CAD1'
@@ -58,6 +58,15 @@ const FilterPage = () => {
   const [toValue, setToValue] = useState(0);
   const [value, setValue] = useState(0);
 
+
+  const animatedValue = useRef(new Animated.Value(0)).current;
+    const [layoutWidth, setLayoutWidth] = useState(0);
+  
+    const onValueChange = (value) => {
+      setValue(value);
+      animatedValue.setValue(value);
+    };
+
   const displayButtons = list.map((item) => {
     return <CategorieButton label={item} />;
   });
@@ -93,18 +102,48 @@ const FilterPage = () => {
       <View style={styles.priceRange}>
         
         <CustomText text={"Price Range"} font={"sansBold"} color={grey}/>
-       
-        <Slider
-          min={0}
-          max={140}
-          step={4}
-          valueOnChange={(value) => setValue(value)}
-          initialValue={12}
-          knobColor="red"
-          //valueLabelsBackgroundColor='black'
-          inRangeBarColor="purple"
-          outOfRangeBarColor="orange"
-        />
+   
+        <View>
+        <View
+        style={styles.sliderContainer}
+        onLayout={(event) => setLayoutWidth(event.nativeEvent.layout.width)}
+      >
+        <Animated.View
+          style={[
+            styles.valueContainer,
+            {
+              left: animatedValue.interpolate({
+                inputRange: [0, 100],
+                outputRange: [0, layoutWidth - 25], // 40 is an approximate width of the value container
+                extrapolate: 'clamp'
+              }),
+            },
+          ]}
+        >
+          {/* <Text style={styles.valueText}>{Math.floor(value)}</Text> */}
+          <View style={{width : 60}}>
+          <CustomText text={`$${Math.floor(value)}.00` } font={'sans'} size={18}/>
+          </View>
+          
+        </Animated.View>
+
+
+              <Slider
+  style={{ height: 40}}
+  onValueChange={onValueChange}
+  minimumValue={0}
+  maximumValue={100}
+  minimumTrackTintColor={purple}
+  maximumTrackTintColor="lightgrey"
+  thumbTintColor={purple}
+  value={value}
+/>
+         </View>
+
+                
+                   
+        </View>
+
       </View>
 
       <View style={styles.option}>
@@ -157,7 +196,7 @@ const styles = StyleSheet.create({
   priceRange: {
     //flex: 6,
     //marginBottom : 80
-    paddingBottom : 100
+    //paddingBottom : 100
   },
   option: {
     //flex: 6,
@@ -177,6 +216,18 @@ const styles = StyleSheet.create({
     borderBottomColor : 'grey',
     paddingVertical : 16,
     alignItems : 'center'
+  },
+  sliderContainer: {
+    //width: 200,
+    position: 'relative',
+    //marginTop : 30
+    //height: 40,
+  },
+  valueContainer: {
+    position: 'absolute',
+    top: -25,
+    width: 30,
+    alignItems: 'center',
   },
 
   // button: {
