@@ -183,6 +183,7 @@ export default function App() {
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="Tab" component={Tabs} />
+        <Stack.Screen name="Filter" component={FilterPage}  options={{ presentation: 'modal' }} />
         </Stack.Navigator>
         </NavigationContainer>
     </Provider>
