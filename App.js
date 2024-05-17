@@ -19,7 +19,7 @@ import RestaurantPage from './pages/restaurantPage';
 import OrderPage from './pages/order';
 import CheckoutPage from './pages/checkout';
 import Success from './pages/success';
-
+import { Ionicons, FontAwesome5, AntDesign, Feather} from '@expo/vector-icons'
 
 
 
@@ -117,15 +117,50 @@ export default function App() {
 
 
     return (
-      <Tab.Navigator>
-        <Tab.Screen  name={"success"} component={Success}/>
-        <Tab.Screen name="Checkout" component={CheckoutPage}/>
-        <Tab.Screen name="Order" component={OrderPage}/>
-        <Tab.Screen name="Rest" component={RestaurantPage}/>
-         <Tab.Screen name="Search" component={SearchPage}/>
-         <Tab.Screen name="filter" component={FilterPage}/>
-        <Tab.Screen name="SandBox" component={SandBox}/>
-        <Tab.Screen name="test" component={SignIn}/>
+      <Tab.Navigator
+      screenOptions={{ headerShown: false }}
+      >
+        {/* <Tab.Screen  name={"success"} component={Success}/>
+        <Tab.Screen name="Checkout" component={CheckoutPage}/> */}
+        
+        <Tab.Screen 
+        name="Search" 
+        component={SearchPage}
+        options={{
+          tabBarIcon: ({color}) => (
+            <Ionicons name="home-outline" size={24}  color={color}/>
+          )}}
+        />
+        <Tab.Screen 
+        name="Rest" 
+        component={RestaurantPage}
+        options={{
+          tabBarIcon: ({color}) => (
+            <FontAwesome5 name="clipboard-list" size={24}  color={color}/>
+          )}}
+        />
+        
+        <Tab.Screen 
+        name="Order" 
+        component={OrderPage}
+        options={{
+          tabBarIcon: ({color}) => (
+            <AntDesign name="hearto" size={24}  color={color}/>
+          )}}
+        
+        />
+        
+         
+         <Tab.Screen 
+         name="filter" 
+         component={FilterPage}
+         options={{
+          tabBarIcon: ({color}) => (
+            <Feather name="bell" size={24}  color={color}/>
+          )}}
+        />
+        {/* <Tab.Screen name="SandBox" component={SandBox}/>
+        <Tab.Screen name="test" component={SignIn}/> */}
         {/* <Tab.Screen name="testd" component={SettingsScreen}/>
         <Tab.Screen name="testdd" component={SettingsScreen}/>
         <Tab.Screen name="SignUp" component={SignUp}/> */}
@@ -147,6 +182,7 @@ export default function App() {
       >
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="SignUp" component={SignUp} />
+        <Stack.Screen name="Tab" component={Tabs} />
         </Stack.Navigator>
         </NavigationContainer>
     </Provider>

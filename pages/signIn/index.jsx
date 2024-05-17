@@ -2,7 +2,7 @@ import { useState } from "react"
 import { View, Text, StyleSheet, Image, TextInput, Pressable } from "react-native"
 import CTA from "../../components/CTA"
 import CustomText from "../../components/CustomText"
-
+import { blue, purple } from "../../utility"
 
 
 
@@ -12,10 +12,9 @@ export const Input = ({label, placeholder, handleChange}) => {
 
 
     return (
-        <View style={{marginBottom : 10}}>
-            {/* <Text style={styles.inputLabel}>{label}</Text> */}
+        <View style={{marginBottom : 20}}>
             <View style={{marginBottom : 4}}>
-                <CustomText text={label} font={"lora"} size={14}/>
+                <CustomText text={label} font={"lora"} size={14} color={blue}/>
             </View>
             
 
@@ -51,7 +50,7 @@ const SignIn = ( {navigation}) => {
             {/* <Text style={styles.welcome}>Hello again!</Text> */}
 
             <View style={{marginBottom : 15}}>
-            <CustomText text={"Hello again!"} size={35} font={"loraBold"} color={"blue"}/>
+            <CustomText text={"Hello again!"} size={35} font={"loraBold"} color={blue}/>
             </View>
            
 
@@ -63,7 +62,7 @@ const SignIn = ( {navigation}) => {
 
 
 
-            <CTA title="Login"/>
+            <CTA title="Login" handlePress={() => navigation.navigate('Tab')}/>
             <Text>Forgot your password?</Text>
 
 
@@ -72,7 +71,7 @@ const SignIn = ( {navigation}) => {
                  <Text>Don't have an account?</Text>
 
             <Pressable onPress={() => navigation.navigate('SignUp') }>
-                <Text style={{color : '#6555FF'}}>
+                <Text style={{color : purple}}>
                     SignUps
                 </Text>
             </Pressable>

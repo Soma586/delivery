@@ -3,13 +3,13 @@ import CustomText from "../CustomText"
 
 
 
-const CTA = ({title}) => {
+const CTA = ({title, handlePress}) => {
 
 
 
 
     return (
-      <TouchableHighlight>
+      <TouchableHighlight onPress={handlePress}>
           <View style={styles.button}>
               <CustomText text={title} font="loraBold" size={18} color="white"/>
           </View>
@@ -26,7 +26,8 @@ const CTA = ({title}) => {
 const styles = StyleSheet.create({
 
     button : {
-        padding: 10,
+        //padding: 10,
+        paddingVertical : 16,
         //color : 'white',
         backgroundColor : '#6555FF',
         width: '100%',

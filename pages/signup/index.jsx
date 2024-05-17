@@ -1,39 +1,76 @@
 
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
 import { Input } from '../signIn';
 import CTA from '../../components/CTA';
+import CustomText from '../../components/CustomText';
+import { AntDesign } from '@expo/vector-icons'
+import { blue, purple } from '../../utility';
 
-
-const SignUp = () => {
+const SignUp = ({navigation}) => {
 
 
 
 
     return (
 
-        <View>
-            <Text>Welcome!</Text>
-
-            <Text>Sign up</Text>
-
-            <Input label={"Name"} placeholder={"Enter your name"}/>
-
-            <Input label={"Email"} placeholder={"Enter your email"}/>
+        <View style={styles.signUpContainer}>
 
 
-            <Input label={"Password"} placeholder={"Choose a password"}/>
+           
+            <Pressable onPress={() => navigation.goBack()}>
+                <AntDesign name={"arrowleft"} size={30}/>
+            </Pressable>
+
+            <View> 
+                <CustomText text={"Welcome!"} font={"lora"} size={16} color={blue}/>
+
+                <CustomText text={"Sign up"} font={"loraBold"} size={32} color={blue}/>
+            </View>
+       
+
+
+            <View>
+                <Input label={"Name"} placeholder={"Enter your name"}/>
+
+                <Input label={"Email"} placeholder={"Enter your email"}/>
+
+
+                <Input label={"Password"} placeholder={"Choose a password"}/>
+
+            </View>
+      
 
 
             
             <CTA title="Create account"/>
 
+
+            <View style={{flexDirection : 'row'}}>
             <Text>Already have an account?</Text>
+
+
+            <Pressable onPress={() => navigation.goBack()}>
+                <Text style={{color : purple}}>Sign In</Text>
+            </Pressable>
+            </View>
+            
 
         </View>
     )
 
 
 }
+
+
+
+const styles = StyleSheet.create({
+
+    signUpContainer : {
+        paddingHorizontal : 30,
+        flex : 1,
+        justifyContent : 'space-around'
+    }
+})
 
 
 
