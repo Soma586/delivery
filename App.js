@@ -8,6 +8,7 @@ import { store } from './store';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import SignIn from './pages/signIn/index'
 import SignUp from './pages/signup';
 import DiscoverItem from './components/discoverItem';
@@ -108,6 +109,7 @@ export default function App() {
 
 
   const Tab = createBottomTabNavigator()
+  const Stack = createNativeStackNavigator();
 
 
 
@@ -139,10 +141,14 @@ export default function App() {
 
 
     <Provider store={store}>
-    <NavigationContainer>
-
-      <Tabs/>
-    </NavigationContainer>
+      <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home" 
+      screenOptions={{ headerShown: false }}
+      >
+        <Stack.Screen name="SignIn" component={SignIn} />
+        <Stack.Screen name="SignUp" component={SignUp} />
+        </Stack.Navigator>
+        </NavigationContainer>
     </Provider>
   )
 

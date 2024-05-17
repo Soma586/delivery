@@ -1,6 +1,7 @@
 import { useState } from "react"
-import { View, Text, StyleSheet, Image, TextInput } from "react-native"
+import { View, Text, StyleSheet, Image, TextInput, Pressable } from "react-native"
 import CTA from "../../components/CTA"
+import CustomText from "../../components/CustomText"
 
 
 
@@ -11,8 +12,12 @@ export const Input = ({label, placeholder, handleChange}) => {
 
 
     return (
-        <View>
-            <Text style={styles.inputLabel}>{label}</Text>
+        <View style={{marginBottom : 10}}>
+            {/* <Text style={styles.inputLabel}>{label}</Text> */}
+            <View style={{marginBottom : 4}}>
+                <CustomText text={label} font={"lora"} size={14}/>
+            </View>
+            
 
 
             <TextInput
@@ -25,7 +30,7 @@ export const Input = ({label, placeholder, handleChange}) => {
     )
 }
 
-const SignIn = () => {
+const SignIn = ( {navigation}) => {
 
 
 
@@ -43,8 +48,12 @@ const SignIn = () => {
 
 
             <View style={styles.signContainer}>
-            <Text style={styles.welcome}>Hello again!</Text>
+            {/* <Text style={styles.welcome}>Hello again!</Text> */}
 
+            <View style={{marginBottom : 15}}>
+            <CustomText text={"Hello again!"} size={35} font={"loraBold"} color={"blue"}/>
+            </View>
+           
 
 
             <Input label="Email" placeholder={"Enter your Email"}/>
@@ -59,7 +68,17 @@ const SignIn = () => {
 
 
 
-            <Text>Don't have an account?</Text>
+            <View style={{flexDirection : 'row'}}>  
+                 <Text>Don't have an account?</Text>
+
+            <Pressable onPress={() => navigation.navigate('SignUp') }>
+                <Text style={{color : '#6555FF'}}>
+                    SignUps
+                </Text>
+            </Pressable>
+
+            </View>
+           
 
             </View>
             
@@ -81,7 +100,8 @@ const styles = StyleSheet.create({
     signContainer : {
 
         // flex : 1,
-        alignItems: 'center'
+        //alignItems: 'center'
+        paddingHorizontal : 30
     },
     welcome : {
         fontSize: 35,
@@ -92,9 +112,12 @@ const styles = StyleSheet.create({
     },
     inputText : {
 
-        borderColor : 'red',
+        borderWidth : 0.5,
+        borderColor : 'grey',
         width: '100%',
-        paddingLeft: 30
+        paddingLeft: 30,
+        borderRadius : 4,
+        paddingVertical : 6
     },
     
 })
