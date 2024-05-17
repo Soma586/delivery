@@ -11,7 +11,7 @@ const CTA = ({title}) => {
     return (
       <TouchableHighlight>
           <View style={styles.button}>
-              <CustomText text={title} font="loraBold" size={18}/>
+              <CustomText text={title} font="loraBold" size={18} color="white"/>
           </View>
 
       </TouchableHighlight>

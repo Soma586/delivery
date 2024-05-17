@@ -2,158 +2,106 @@
 //import { View, Text} from 'react-native'
 import CustomText from '../../components/CustomText'
 
-import { StyleSheet, Text,View, Button, SafeAreaView, ScrollView } from 'react-native';
+import { StyleSheet, Text,View, Image, Button, SafeAreaView, ScrollView , TouchableWithoutFeedback} from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useDerivedValue,
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
+import { useState } from 'react';
 import data from './data';
 import Accordion from './accordion';
+import paypal from '../../assets/paypal.png'
+import home from '../../assets/home.png'
+import CTA from '../../components/CTA';
 
 
-// function AccordionItem({
-//   isExpanded,
-//   children,
-//   viewKey,
-//   style,
-//   duration = 200,
-// }) {
-//   const height = useSharedValue(0);
+const PayMethod = ({icon = home ,text, highlight , handlePress}) => {
 
-//   const derivedHeight = useDerivedValue(() =>
-//     withTiming(height.value * Number(isExpanded.value), {
-//       duration,
-//     })
-//   );
-//   const bodyStyle = useAnimatedStyle(() => ({
-//     height: derivedHeight.value,
-//   }));
+    console.log(` highlight is  ${highlight}`)
 
-//   return (
-//     <Animated.View
-//       key={`accordionItem_${viewKey}`}
-//       style={[styles.animatedView, bodyStyle, style]}>
-//       <View
-//         onLayout={(e) => {
-//           height.value = e.nativeEvent.layout.height;
-//         }}
-//         style={styles.wrapper}>
-//         {children}
-//       </View>
-//     </Animated.View>
-//   );
-// }
+    return (
+        <TouchableWithoutFeedback onPress={handlePress}>
+        <View style={[highlight ? styles.highlight : styles.payMethod]}>
 
-// function Item() {
-//   return <View style={styles.box} />;
-// }
+            <Image
+            source={icon}
+            style={{width : 33, height : 22, marginRight : 10}}
+            />
 
-// function Parent({ open }) {
-//   return (
-//     <View style={styles.parent}>
-//       <AccordionItem isExpanded={open} viewKey="Accordion">
-//         <Item />
-//       </AccordionItem>
-//     </View>
-//   );
-// }
+            <Text>{text}</Text>
 
-// function Appz() {
-//   const open = useSharedValue(false);
-//   const onPress = () => {
-//     open.value = !open.value;
-//   };
-
-//   return (
-//     <SafeAreaView style={styles.container}>
-//       <View style={styles.buttonContainer}>
-//         <Button onPress={onPress} title="Click me" />
-//       </View>
-
-//       <View style={styles.content}>
-//       <View style={styles.welcomeContainer}>
-//           <Text>Welcome</Text>
-//         </View>
-//         <Parent open={open} />
-//       </View>
-    
-//     </SafeAreaView>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     //justifyContent: 'center',
-//     //paddingTop: 24,
-//   },
-//   buttonContainer: {
-//     flex: 1,
-//     // paddingBottom: '1rem',
-//     // display: 'flex',
-//     // flexDirection: 'row',
-//     // justifyContent: 'center',
-//     // alignItems: 'center',
-//   },
-//   content: {
-//     // flex: 1,
-//     // justifyContent: 'center',
-//     // alignItems: 'center',
-//     // borderWidth : 1,
-//     // borderColor : 'red'
-//   },
-//   parent: {
-//     //width: 200,
-//     borderWidth : 1,
-//     borderColor : 'red',
-//     overflow : 'hidden'
-//   },
-//   welcomeContainer: {
-//     marginBottom: 20,
-//   },
-//   wrapper: {
-//     width: '100%',
-//     position: 'absolute',
-//     display: 'flex',
-//     alignItems: 'center',
-//   },
-//   animatedView: {
-//     width: '100%',
-//     overflow: 'hidden',
-//   },
-//   box: {
-//     height: 120,
-//     width: 120,
-//     color: '#f8f9ff',
-//     backgroundColor: '#b58df1',
-//     borderRadius: 20,
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });
+        </View>
+        </TouchableWithoutFeedback>
+    )
+}
 
 
 
-const CheckoutPage = () => {
+const DeliveryAddress = () => {
 
 
     return (
-        <View style={{flex : 1}}>
-            {/* <Text>Checkout</Text> */}
-            <ScrollView showsVerticalScrollIndicator={false}>
-        {data.map((value, index) => {
-          return <Accordion value={value} key={index} type={value.type} />;
-        })}
-      </ScrollView>
-            
-
+        <View>
+            <Text>
+            138 Colonial Ave.
+            </Text>
+            <Text>
+            Land O Lakes, FL 34639
+            </Text>
 
         </View>
     )
 }
 
 
+const CheckoutPage = () => {
+
+
+
+
+    //const [test , setTest] = useState(data)
+
+
+
+    return (
+        <View style={{flex : 1, paddingHorizontal : 20}}>
+            {/* <Text>Checkout</Text> */}
+            <ScrollView showsVerticalScrollIndicator={false}>
+        {data.map((value, index) => {
+          return <Accordion value={value} key={index} type={value.type}  Component={PayMethod}/>;
+        })}
+      </ScrollView>
+            
+
+            {/* <PayMethod highlight={true}/> */}
+            <CTA title={"Process Order"}/>
+        </View>
+    )
+}
+
+
+const styles = StyleSheet.create({
+
+    payMethod : {
+        flexDirection : 'row',
+        padding : 20,
+        alignItems : 'center',
+        borderWidth : 0.2,
+        borderColor : 'grey',
+        marginBottom : 12
+        
+    },
+    highlight : {
+        borderWidth: 2,
+        borderColor : 'purple',
+        flexDirection : 'row',
+        padding : 20,
+        alignItems : 'center',
+        
+        marginBottom : 12
+    }
+})
 
 export default CheckoutPage

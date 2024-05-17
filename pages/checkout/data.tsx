@@ -1,3 +1,5 @@
+//import payPal from '../../assets/paypal.png';
+
 export type Category = {
     title: string;
     content: string[];
@@ -12,16 +14,16 @@ export type Category = {
   
   export type Data = Category[];
   
-  const data: Data = [
+  const data= [
     {
       title: 'Payment Method',
-      content: ['Content Category 1'],
+      content: ['**** **** **** 0025', 'Tarik.Mulholland@gmail.com', '**** **** **** 0947'],
       contentNested: [],
       type: 'regular',
     },
     {
       title: 'Delivery Address',
-      content: ['Content Category 1', 'Content Category 2'],
+      content: ['Home', 'Work'],
       contentNested: [],
       type: 'regular',
     },

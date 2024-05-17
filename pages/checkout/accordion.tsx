@@ -1,5 +1,5 @@
 import {Pressable, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, { Component, useState } from 'react';
 //import {Category} from '../data/data';
 import {Category} from './data'
 import Animated, {
@@ -13,10 +13,14 @@ import Animated, {
 } from 'react-native-reanimated';
 import Chevron from './chevron';
 import AccordionNested from './AccordionNested';
+import paypal from '../../assets/paypal.png';
+import mastercard from '../../assets/mastercard.jpg';
+import visa from '../../assets/visa.png'
+import home from '../../assets/home.png'
 
 
 
-const Accordion = ({value, type}) => {
+const Accordion = ({value, type, Component}) => {
   const listRef = useAnimatedRef();
   const heightValue = useSharedValue(0);
   const open = useSharedValue(false);
@@ -27,6 +31,41 @@ const Accordion = ({value, type}) => {
   const heightAnimationStyle = useAnimatedStyle(() => ({
     height: heightValue.value,
   }));
+
+
+  let newData = value.content.map((item, index) => {
+
+    return {
+      item,
+      active : index === 0 ? true : false
+    }
+   
+  })
+
+  let map = new Map()
+
+  map.set(0, visa)
+  map.set(1, paypal)
+  map.set(2, mastercard)
+  const [ data, setData] = useState(newData)
+
+  const handlePress = (index) => {
+
+    const copy = [...data]
+
+    console.log(copy)
+    copy.forEach((item) => {
+      item.active = false
+    })
+
+    copy[index].active = true
+
+    setData(copy)
+
+  }
+
+  console.log(data)
+
 
   return (
     <View style={styles.container}>
@@ -49,11 +88,21 @@ const Accordion = ({value, type}) => {
       <Animated.View style={heightAnimationStyle}>
         <Animated.View style={styles.contentContainer} ref={listRef}>
           {type === 'regular' &&
-            value.content.map((v, i) => {
+            data.map((v, i) => {
+              //console.log(v)
               return (
-                <View key={i} style={styles.content}>
-                  <Text style={styles.textContent}>{v}</Text>
-                </View>
+                // <View key={i} style={styles.content}>
+                //   <Component text={v}/>
+                //   <Text style={styles.textContent}>{v}</Text>
+                // </View>
+                <Component 
+                key={i} 
+                icon = {value.title === "Payment Method" ? map.get(i) : home}
+                text={v.item}
+                highlight ={v.active}
+                handlePress={() => handlePress(i)}
+                
+                />
               );
             })}
           {type === 'nested' && (

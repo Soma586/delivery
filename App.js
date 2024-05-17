@@ -17,6 +17,7 @@ import SearchPage from './pages/search';
 import RestaurantPage from './pages/restaurantPage';
 import OrderPage from './pages/order';
 import CheckoutPage from './pages/checkout';
+import Success from './pages/success';
 
 
 
@@ -115,6 +116,7 @@ export default function App() {
 
     return (
       <Tab.Navigator>
+        <Tab.Screen  name={"success"} component={Success}/>
         <Tab.Screen name="Checkout" component={CheckoutPage}/>
         <Tab.Screen name="Order" component={OrderPage}/>
         <Tab.Screen name="Rest" component={RestaurantPage}/>
