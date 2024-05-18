@@ -19,6 +19,7 @@ import burger from "../../assets/burger.png";
 import DiscoverItem from "../../components/discoverItem";
 import { blue } from "../../utility";
 import { Ionicons} from '@expo/vector-icons'
+import { data } from "./data";
 
 const CategoryBox = ({ label, icon }) => {
   return (
@@ -58,55 +59,57 @@ const SearchPage = ({navigation}) => {
     },
   ]);
 
-  const rest = [
-    {
-      index: 1,
-      restaurant: "Chipotle",
-      rating: "4.5",
-    },
-    {
-      index: 2,
-      restaurant: "Pizza hut",
-      rating: "4.5",
-    },
-    {
-      index: 3,
-      restaurant: "Ice Cream parlor",
-      rating: "4.5",
-    },
-    {
-      index: 4,
-      restaurant: "Burger King",
-      rating: "4.5",
-    },
-    {
-      index: 5,
-      restaurant: "Bento & Tea",
-      rating: "4.5",
-    },
-    {
-      index: 6,
-      restaurant: "Kung Fu Tea",
-      rating: "4.5",
-    },
-    {
-      index: 7,
-      restaurant: "McDonalds",
-      rating: "4.5",
-    },
-    {
-      index: 8,
-      restaurant: "Dunkin",
-      rating: "4.5",
-    },
-    {
-      index: 9,
-      restaurant: "Luna Pizza",
-      rating: "4.5",
-    },
-  ];
+  const [list, setList] = useState(data)
 
-  const [list, setList] = useState(rest);
+//   const rest = [
+//     {
+//       index: 1,
+//       restaurant: "Chipotle",
+//       rating: "4.5",
+//     },
+//     {
+//       index: 2,
+//       restaurant: "Pizza hut",
+//       rating: "4.5",
+//     },
+//     {
+//       index: 3,
+//       restaurant: "Ice Cream parlor",
+//       rating: "4.5",
+//     },
+//     {
+//       index: 4,
+//       restaurant: "Burger King",
+//       rating: "4.5",
+//     },
+//     {
+//       index: 5,
+//       restaurant: "Bento & Tea",
+//       rating: "4.5",
+//     },
+//     {
+//       index: 6,
+//       restaurant: "Kung Fu Tea",
+//       rating: "4.5",
+//     },
+//     {
+//       index: 7,
+//       restaurant: "McDonalds",
+//       rating: "4.5",
+//     },
+//     {
+//       index: 8,
+//       restaurant: "Dunkin",
+//       rating: "4.5",
+//     },
+//     {
+//       index: 9,
+//       restaurant: "Luna Pizza",
+//       rating: "4.5",
+//     },
+//   ];
+
+//   const [list, setList] = useState(rest);
 
   return (
     <View style={styles.searchContainer}>
@@ -150,7 +153,7 @@ const SearchPage = ({navigation}) => {
       <View style={{ alignItems : 'center'}}>
         <FlatList
           data={list}
-          renderItem={({ item }) => <DiscoverItem {...item} />}
+          renderItem={({ item }) => <DiscoverItem navigation={navigation} {...item} />}
           numColumns={2}
           showsVerticalScrollIndicator={false}
           //keyExtractor={(item) => item.key}

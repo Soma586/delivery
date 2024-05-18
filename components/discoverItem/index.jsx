@@ -1,25 +1,53 @@
 import { TouchableHighlight, Text, StyleSheet, ImageBackground, View } from "react-native"
 import { FontAwesome } from "@expo/vector-icons"
 import CustomText from "../CustomText"
+import { LinearGradient } from 'expo-linear-gradient'
 
 
+const DiscoverItem = (props) => {
 
-const DiscoverItem = ({restaurant ="mash Burgers", rating ="4.5", index }) => {
-
-
+    const {
+        navigation,
+        pic,
+        restaurant,
+        rating = "4.5",
+        index,
+    } = props
 
 
     return (
 
-        <TouchableHighlight style={index % 2 !== 0 ? styles.secondColumn : null}>
+        <TouchableHighlight 
+        style={index % 2 !== 0 ? styles.secondColumn : null}
+        onPress={() => navigation.navigate({ 
+            name : 'RestaurantPage',
+            params : props
+        })}
+        >
             
             <ImageBackground
-            source={require('../../assets/burger.webp')}
+            //source={require('../../assets/burger.webp')}
+            source={pic}
             //source={{uri : 'https://legacy.reactjs.org/logo-og.png'}}
             resizeMode="cover"
             style={styles.ItemContainer}
             //imageStyle={{borderRadius: 10}}
             >
+                          <LinearGradient
+        colors={["rgba(0,0,0,0.7)", "rgba(0,0,0,0.7)"]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 0, y: 0 }}
+        style={{
+            opacity : 0.65,
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          top: 0,
+          bottom: 0,
+          width: '100%',
+          height: '100%'
+        }}
+      />
 
                 <View style={styles.itemDetails}>
                 <Text style={styles.itemText}>
@@ -28,8 +56,8 @@ const DiscoverItem = ({restaurant ="mash Burgers", rating ="4.5", index }) => {
                 </Text> 
 
 
-                    <View>
-                        <FontAwesome name="star" size={20} color="white"/>
+                    <View style={{flexDirection : 'row', alignItems : 'center'}}>
+                        <FontAwesome style={{marginRight : 6}} name="star" size={20} color="white"/>
                         <Text style={styles.itemText}>
                             <CustomText text={rating} size={12} color="white" font="sans"/>
                         </Text>

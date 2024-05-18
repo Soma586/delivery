@@ -1,0 +1,182 @@
+import applePie from '../../../assets/appiePie.jpeg'
+import burgerKing from '../../../assets/burgerking.jpeg'
+import burgerMeals from '../../../assets/burgersMeal.webp'
+import burrito from '../../../assets/burrito.webp'
+import burritoBowl from '../../../assets/burritobowl.avif'
+import cake from '../../../assets/cake.jpeg'
+import chiptole from '../../../assets/chiptole.jpeg'
+import cookies from '../../../assets/cookies.webp'
+import cupcakes from '../../../assets/cupcake.webp'
+import eggrolls from '../../../assets/eggrolls.jpeg'
+import margherita from '../../../assets/margherita.jpeg'
+import marinara from '../../../assets/marinara.jpeg'
+import mcBurger from '../../../assets/mcBurger.jpeg'
+import mcdonalds from '../../../assets/mcdonalds.jpeg'
+import pizzhut from '../../../assets/pizzahut.webp'
+import ramen from '../../../assets/ramen.jpeg'
+import shang from '../../../assets/shang.jpeg'
+import sushi from '../../../assets/sushi.jpeg'
+import tacos from '../../../assets/tacos.jpeg'
+import unapizza from '../../../assets/unaPizza.jpeg'
+import wine from '../../../assets/wine.jpeg'
+
+
+export const data = [
+
+    {
+       restaurant : 'chiptole',
+       type : 'Mexican',
+       rating : "4.9" ,
+       pic : chiptole,
+       menu : [
+           { 
+               dish : "burritoBowl",
+               price : 12.99,
+               img : burritoBowl
+           },
+           { 
+            dish : "burrito",
+            price : 12.99,
+            img : burrito
+        },
+        { 
+            dish : "tacos",
+            price : 8.99,
+            img : tacos
+        }
+       ]
+    },
+    {
+        restaurant : 'Pizza Hut',
+        type : 'pizza',
+        rating : "4.1" ,
+        pic : pizzhut,
+        menu : [
+            { 
+                dish : "pie",
+                price : 12.99,
+                img : margherita
+            },
+            { 
+             dish : "cookies",
+             price : 12.99,
+             img : cookies
+         },
+         { 
+             dish : "cake",
+             price : 2.99,
+             img : cupcakes
+         }
+        ]
+     },
+     {
+        restaurant : 'Burger King',
+        rating : "4.1" ,
+        type : 'burgers',
+        pic : burgerKing,
+        menu : [
+            { 
+                dish : "Apple pie",
+                price : applePie
+            },
+            { 
+             dish : "Burger",
+             price : 12.99,
+             img : burgerMeals
+         },
+         { 
+             dish : "Meal",
+             price : 15.99,
+             img : burgerMeals
+         }
+        ]
+     },
+     {
+        restaurant : 'mcDonalds',
+        rating : "4.1" ,
+        pic : mcdonalds,
+        type : "burgers",
+        menu : [
+            { 
+                dish : "burgerMeal",
+                price : 12,
+                img : burgerMeals,
+            },
+            { 
+             dish : "cookies",
+             price : cookies
+         },
+         { 
+             dish : "pie",
+             price : 2.99,
+             img : applePie
+         }
+        ]
+     },
+     {
+        restaurant : 'Shangeri-la',
+        rating : "4.1" ,
+        pic : shang,
+        type :'Asian',
+        menu : [
+            { 
+                dish : "Ramen",
+                price : 10.99,
+                img : ramen
+            },
+            { 
+             dish : "Sushi",
+             price : 5.99,
+             img : sushi
+         },
+         { 
+             dish : "eggroll",
+             price : 2.99,
+             img : eggrolls,
+         }
+        ]
+     },
+     {
+        restaurant : 'UnaPizza',
+        rating : "5.0" ,
+        pic : unapizza,
+        type :'pizza',
+        menu : [
+            { 
+                dish : "margrita",
+                price : 10.99,
+            },
+            { 
+             dish : "wine",
+             price : 5.99,
+         },
+         { 
+             dish : "Marinara",
+             price : 10.99,
+         }
+        ]
+     },   {
+        restaurant : 'Sweet-Genie Cakes',
+        rating : "4.9" ,
+        type :'Cake',
+        menu : [
+            { 
+                dish : "Vanilla Cake",
+                price : 7.99,
+                img : cake
+            },
+            { 
+             dish : "Cookies",
+             price : 5.99,
+             img : cookies,
+         },
+         { 
+             dish : "cupcakes",
+             price : 2.99,
+             img : cupcakes
+         }
+        ]
+     },
+
+
+]

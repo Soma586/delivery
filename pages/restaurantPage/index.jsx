@@ -28,7 +28,19 @@ const FeatureItem = ({dishName, price}) => {
 }
 
 
-const RestaurantPage = ({address ="tesing", timeSlot="12pm-4pm"}) => {
+const RestaurantPage = (props) => {
+
+
+    const  {
+        //restaurant,
+    } = props
+
+
+    const { menu, pic, restaurant} = props.route.params
+
+    // console.log("hi there")
+    // console.log({props})
+    // console.log(props.route.params)
 
 
     const [featureList, setFeatureList] = useState([
@@ -74,9 +86,10 @@ const RestaurantPage = ({address ="tesing", timeSlot="12pm-4pm"}) => {
 
             <View style={{ position : "relative"}}>
                 <Image
-                source={require('../../assets/local.jpeg')}
-                style={{width : Dimensions.get('window').width}}
-                resizeMode="cover"
+                //source={require('../../assets/local.jpeg')}
+                source={pic}
+                style={{width : Dimensions.get('window').width, height : 430}}
+                resizeMode='cover'
                 />
              
                 <LinearGradient
@@ -95,8 +108,10 @@ const RestaurantPage = ({address ="tesing", timeSlot="12pm-4pm"}) => {
         }}
       />
 
+
+      
                 <View style={styles.restaurantName}>
-                    <CustomText text={"Moka Club"} font={"loraBold"} size={40} color={"white"}/>
+                    <CustomText text={restaurant} font={"loraBold"} size={40} color={"white"}/>
                 </View>
 
             <TouchableHighlight style={styles.favoriteButton}>
@@ -106,19 +121,19 @@ const RestaurantPage = ({address ="tesing", timeSlot="12pm-4pm"}) => {
 
             </View>
 
-            <View >
+            <View style={styles.foodContainer} >
 
                 <View style={{flex : 1, flexDirection : 'row'}}>
                  
                     <EvilIcons name="location" size={20}/>
                 
-                    <CustomText text={address} font={'sans'}/>
+                    <CustomText text={"test"} font={'sans'}/>
                 </View>
                 <View style={{flex : 1, flexDirection : 'row'}}>
                  
                     <EvilIcons name="clock" size={20}/>
              
-                    <CustomText text={timeSlot} font={'sans'}/>
+                    <CustomText text={"test"} font={'sans'}/>
                 </View>
 
                 <CustomText text={"Feature Items"} font={'ssBold'} size={19}/>
@@ -142,14 +157,19 @@ const RestaurantPage = ({address ="tesing", timeSlot="12pm-4pm"}) => {
 
                     <View>
 
-                    {featureList.map((item, index) => (
+                    {menu.map((item, index) => (
                         <View>
-                            <MenuItem title={item.dishName} price={item.price}/>
+                            <MenuItem 
+                            title={item.dish} 
+                            price={item.price}
+                            img={item.img}
+                            />
                         </View>
                     ))}
                     </View>
 
             </View>
+           
         </ScrollView>
     )
 
@@ -160,6 +180,9 @@ const RestaurantPage = ({address ="tesing", timeSlot="12pm-4pm"}) => {
 
 const styles = StyleSheet.create({
 
+    foodContainer : {
+        paddingHorizontal : 20
+    },
    featuredImage : {
        width: 186,
        height : 126,

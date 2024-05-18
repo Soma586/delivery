@@ -6,7 +6,7 @@ import { addFood } from '../../storeFeature/cartslice'
 
 
 
-const MenuItem = ({title= "Dish name", image, detail="lorem ipsum", price=14.90}) => {
+const MenuItem = ({title= "Dish name", img, detail="lorem ipsum", price=14.90}) => {
 
 
 
@@ -24,7 +24,8 @@ const MenuItem = ({title= "Dish name", image, detail="lorem ipsum", price=14.90}
         <View>
             <Image
             style={styles.menuImage}
-            source={require('../../assets/burger.webp')}
+            //source={require('../../assets/burger.webp')}
+            source={img}
             />
 </View>
 
