@@ -69,8 +69,11 @@ const styles = StyleSheet.create({
 
     signUpContainer : {
         paddingHorizontal : 30,
-        flex : 1,
-        justifyContent : 'space-around'
+        height : '75%',
+        //flex : 1,
+        paddingTop : 60,
+        justifyContent : 'space-around',
+       // paddingBottom : 
     }
 })
 

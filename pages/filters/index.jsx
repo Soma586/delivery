@@ -31,10 +31,10 @@ const CategorieButton = ({ label }) => {
   );
 };
 
-const OptionButton = ({ label = "Free Delivery" }) => {
+const OptionButton = ({ label = "Free Delivery", index }) => {
   return (
     <TouchableHighlight style={styles.optionBuff}>
-      <View style={styles.optionButton}>
+      <View style={[ index%2 === 0 ? styles.optionButton : styles.optionButtonOdd]}>
         {/* <Text>{label}</Text> */}
         <CustomText
           text={label}
@@ -82,7 +82,7 @@ const FilterPage = () => {
   });
 
   const displayOptions = _.map(options, (item ,index) => {
-    return <OptionButton key={index} label={item} />;
+    return <OptionButton key={index} label={item}  index={index}/>;
   });
 
   return (
@@ -162,13 +162,16 @@ const FilterPage = () => {
       </View>
 
       <View style={styles.option}>
-        <CustomText text={"O P T I O N S"} font={"sans-bold"} color={grey} />
+          <View style={{marginBottom : 20}}>
+             <CustomText text={"O P T I O N S"} font={"sans-bold"} color={grey} />
+          </View>
+
 
         {displayOptions}
       </View>
 
       <View>
-        <CTA title={"Search"} />
+        <CTA title={"Apply"} />
       </View>
     </View>
   );
@@ -187,8 +190,10 @@ const styles = StyleSheet.create({
   filterHeight: {
     //height: "100%",
     paddingHorizontal: 20,
-    flex: 1,
+    //flex: 1,
+    height : "100%",
     justifyContent: "space-around",
+    paddingBottom : 70
   },
   categoriesContainer: {
     //flex: 3,
@@ -198,25 +203,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#CDCDCD",
     alignSelf: "center",
-    //backgroundColor :'blue',
-    //height : 200
     paddingHorizontal: 20,
     paddingVertical: 10,
     marginRight: 10,
     marginBottom: 10,
-    // minWidth: 70
-  },
-  priceRange: {
-    //flex: 6,
-    //marginBottom : 80
-    //paddingBottom : 100
-  },
-  option: {
-    //flex: 6,
-    height: 300,
-  },
-  optionBuff: {
-    //height: 200,
   },
   optionButton: {
     //flex: 1,
@@ -229,11 +219,22 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     alignItems: "center",
   },
+  optionButtonOdd : {
+    justifyContent: "space-between",
+    flexDirection: "row",
+    //borderTopWidth: 0.5,
+    //borderTopColor: "grey",
+    //borderBottomWidth: 0.5,
+    //borderBottomColor: "grey",
+    paddingVertical: 16,
+    alignItems: "center",
+
+  },
   sliderContainer: {
     //width: 200,
     position: "relative",
-    //marginTop : 30
-    //height: 40,
+    marginTop : 40
+    //height: 400,
   },
   valueContainer: {
     position: "absolute",
