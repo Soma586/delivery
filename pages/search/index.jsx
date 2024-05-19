@@ -26,7 +26,7 @@ const CategoryBox = ({ label, icon }) => {
     <View style={styles.categoryBox}>
       <Image style={styles.categoryImage} source={icon} resizeMode="contain" />
 
-      <Text>{label}</Text>
+     <CustomText text={label} font={"sans-light"}/>
     </View>
   );
 };
@@ -61,55 +61,6 @@ const SearchPage = ({navigation}) => {
 
   const [list, setList] = useState(data)
 
-//   const rest = [
-//     {
-//       index: 1,
-//       restaurant: "Chipotle",
-//       rating: "4.5",
-//     },
-//     {
-//       index: 2,
-//       restaurant: "Pizza hut",
-//       rating: "4.5",
-//     },
-//     {
-//       index: 3,
-//       restaurant: "Ice Cream parlor",
-//       rating: "4.5",
-//     },
-//     {
-//       index: 4,
-//       restaurant: "Burger King",
-//       rating: "4.5",
-//     },
-//     {
-//       index: 5,
-//       restaurant: "Bento & Tea",
-//       rating: "4.5",
-//     },
-//     {
-//       index: 6,
-//       restaurant: "Kung Fu Tea",
-//       rating: "4.5",
-//     },
-//     {
-//       index: 7,
-//       restaurant: "McDonalds",
-//       rating: "4.5",
-//     },
-//     {
-//       index: 8,
-//       restaurant: "Dunkin",
-//       rating: "4.5",
-//     },
-//     {
-//       index: 9,
-//       restaurant: "Luna Pizza",
-//       rating: "4.5",
-//     },
-//   ];
-
-//   const [list, setList] = useState(rest);
 
   return (
     <View style={styles.searchContainer}>
@@ -135,7 +86,7 @@ const SearchPage = ({navigation}) => {
       <CustomText
       text={"Categories"}
       size={19}
-      font={"lora"}
+      font={"loraRegular"}
       color={blue}
       />
       </View>

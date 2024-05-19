@@ -1,15 +1,21 @@
-import _ from 'lodash'
+import _ from "lodash";
 import { useState, useRef } from "react";
-import { View, Text, TouchableHighlight, StyleSheet,  Animated} from "react-native";
+import {
+  View,
+  Text,
+  TouchableHighlight,
+  StyleSheet,
+  Animated,
+} from "react-native";
 //import RangeSlider, { Slider } from "react-native-range-slider-expo";
 import { Ionicons, FlatList } from "@expo/vector-icons";
 import CTA from "../../components/CTA";
 import CustomText from "../../components/CustomText";
 import { blue, purple } from "../../utility";
-import Slider from '@react-native-community/slider';
+import Slider from "@react-native-community/slider";
 //todo see if you can make your own slider
 
-const grey = '#C7CAD1'
+const grey = "#C7CAD1";
 
 const CategorieButton = ({ label }) => {
   return (
@@ -20,7 +26,7 @@ const CategorieButton = ({ label }) => {
       underlayColor="red"
     >
       {/* <Text>{label}</Text> */}
-      <CustomText text={label} color={grey} font={"sans"}/>
+      <CustomText text={label} color={grey} font={"sans-regular"} />
     </TouchableHighlight>
   );
 };
@@ -30,9 +36,14 @@ const OptionButton = ({ label = "Free Delivery" }) => {
     <TouchableHighlight style={styles.optionBuff}>
       <View style={styles.optionButton}>
         {/* <Text>{label}</Text> */}
-        <CustomText text={label} font={"sansBold"} color={purple} size={18}/>
+        <CustomText
+          text={label}
+          font={"sans-regular"}
+          color={purple}
+          size={18}
+        />
 
-        <Ionicons name={"checkmark-sharp"} size={30} color={purple}/>
+        <Ionicons name={"checkmark-sharp"} size={30} color={purple} />
       </View>
     </TouchableHighlight>
   );
@@ -49,108 +60,110 @@ const FilterPage = () => {
   ]);
 
   const [options, setOptions] = useState([
-      "Free Delivery",
-      "Restaurant ticket",
-      "Glutten Free"
-  ])
+    "Free Delivery",
+    "Restaurant ticket",
+    "Glutten Free",
+  ]);
 
   const [fromValue, setFromValue] = useState(0);
   const [toValue, setToValue] = useState(0);
   const [value, setValue] = useState(0);
 
-
   const animatedValue = useRef(new Animated.Value(0)).current;
-    const [layoutWidth, setLayoutWidth] = useState(0);
-  
-    const onValueChange = (value) => {
-      setValue(value);
-      animatedValue.setValue(value);
-    };
+  const [layoutWidth, setLayoutWidth] = useState(0);
 
-  const displayButtons = list.map((item) => {
-    return <CategorieButton label={item} />;
+  const onValueChange = (value) => {
+    setValue(value);
+    animatedValue.setValue(value);
+  };
+
+  const displayButtons = list.map((item, index) => {
+    return <CategorieButton key={index} label={item} />;
   });
 
-
-  const displayOptions = _.map(options, (item) => {
-
-    return <OptionButton label={item}/>
-  })
+  const displayOptions = _.map(options, (item ,index) => {
+    return <OptionButton key={index} label={item} />;
+  });
 
   return (
     <View style={styles.filterHeight}>
       <View style={styles.header}>
-        <CustomText text={"Filters"} size={22} font={"lora"} color={blue}/>
+        <CustomText text={"Filters"} size={22} font={"loraBold"} color={blue} />
 
-        <View style={{flexDirection : 'row', alignItems : 'center'}}>
-            <Ionicons name="refresh" size={16}/>
-        <CustomText text={"Reset"} size={18} font={"sans"}/>
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <Ionicons name="refresh" size={16} />
+          <CustomText
+            text={"Reset"}
+            size={18}
+            font={"sans-light"}
+            color={blue}
+          />
         </View>
-       
-       
       </View>
 
       <View style={styles.categoriesContainer}>
-        
-        <CustomText text={"Categories"} font={"sansBold"} color={grey}/>
+        <CustomText
+          text={"C A T E G O R I E S"}
+          font={"sans-bold"}
+          color={grey}
+        />
 
-        <View style={{flexDirection: "row", flexWrap: "wrap" }}>
+        <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
           {displayButtons}
         </View>
       </View>
 
       <View style={styles.priceRange}>
-        
-        <CustomText text={"Price Range"} font={"sansBold"} color={grey}/>
-   
+        <CustomText
+          text={"P R I C E R A N G E"}
+          font={"sans-bold"}
+          color={grey}
+        />
+
         <View>
-        <View
-        style={styles.sliderContainer}
-        onLayout={(event) => setLayoutWidth(event.nativeEvent.layout.width)}
-      >
-        <Animated.View
-          style={[
-            styles.valueContainer,
-            {
-              left: animatedValue.interpolate({
-                inputRange: [0, 100],
-                outputRange: [0, layoutWidth - 25], // 40 is an approximate width of the value container
-                extrapolate: 'clamp'
-              }),
-            },
-          ]}
-        >
-          {/* <Text style={styles.valueText}>{Math.floor(value)}</Text> */}
-          <View style={{width : 60}}>
-          <CustomText text={`$${Math.floor(value)}.00` } font={'sans'} size={18}/>
+          <View
+            style={styles.sliderContainer}
+            onLayout={(event) => setLayoutWidth(event.nativeEvent.layout.width)}
+          >
+            <Animated.View
+              style={[
+                styles.valueContainer,
+                {
+                  left: animatedValue.interpolate({
+                    inputRange: [0, 100],
+                    outputRange: [0, layoutWidth - 25], // 40 is an approximate width of the value container
+                    extrapolate: "clamp",
+                  }),
+                },
+              ]}
+            >
+              {/* <Text style={styles.valueText}>{Math.floor(value)}</Text> */}
+              <View style={{ width: 60 }}>
+                <CustomText
+                  text={`$${Math.floor(value)}.00`}
+                  font={"sans-light"}
+                  size={18}
+                />
+              </View>
+            </Animated.View>
+
+            <Slider
+              style={{ height: 40 }}
+              onValueChange={onValueChange}
+              minimumValue={0}
+              maximumValue={100}
+              minimumTrackTintColor={purple}
+              maximumTrackTintColor="lightgrey"
+              thumbTintColor={purple}
+              value={value}
+            />
           </View>
-          
-        </Animated.View>
-
-
-              <Slider
-  style={{ height: 40}}
-  onValueChange={onValueChange}
-  minimumValue={0}
-  maximumValue={100}
-  minimumTrackTintColor={purple}
-  maximumTrackTintColor="lightgrey"
-  thumbTintColor={purple}
-  value={value}
-/>
-         </View>
-
-                
-                   
         </View>
-
       </View>
 
       <View style={styles.option}>
-       
-        <CustomText text={"options"} font={"sansBolrd"} color={grey}/>
+        <CustomText text={"O P T I O N S"} font={"sans-bold"} color={grey} />
 
-        
         {displayOptions}
       </View>
 
@@ -169,13 +182,13 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     borderBottomWidth: 1,
     borderBottomColor: "grey",
-   // height: 100,
+    // height: 100,
   },
   filterHeight: {
     //height: "100%",
-    paddingHorizontal : 20,
+    paddingHorizontal: 20,
     flex: 1,
-    justifyContent : 'space-around'
+    justifyContent: "space-around",
   },
   categoriesContainer: {
     //flex: 3,
@@ -200,34 +213,33 @@ const styles = StyleSheet.create({
   },
   option: {
     //flex: 6,
-    height : 300
+    height: 300,
   },
   optionBuff: {
     //height: 200,
-    
   },
   optionButton: {
     //flex: 1,
     justifyContent: "space-between",
     flexDirection: "row",
-    borderTopWidth : 0.5,
-    borderTopColor : 'grey',
-    borderBottomWidth : 0.5,
-    borderBottomColor : 'grey',
-    paddingVertical : 16,
-    alignItems : 'center'
+    borderTopWidth: 0.5,
+    borderTopColor: "grey",
+    borderBottomWidth: 0.5,
+    borderBottomColor: "grey",
+    paddingVertical: 16,
+    alignItems: "center",
   },
   sliderContainer: {
     //width: 200,
-    position: 'relative',
+    position: "relative",
     //marginTop : 30
     //height: 40,
   },
   valueContainer: {
-    position: 'absolute',
+    position: "absolute",
     top: -25,
     width: 30,
-    alignItems: 'center',
+    alignItems: "center",
   },
 
   // button: {

@@ -1,12 +1,12 @@
-import * as Font from 'expo-font';
-import { useState, useEffect } from 'react';
+import {useFonts} from 'expo-font';
+import { useState, useEffect, useCallback } from 'react';
 import { Text, StyleSheet } from 'react-native';
+import * as SplashScreen from 'expo-splash-screen';
 
 
 
 
-
-
+SplashScreen.preventAutoHideAsync();
 
 const loadCustomFonts = async () => {
     await Font.loadAsync({
@@ -19,18 +19,38 @@ const loadCustomFonts = async () => {
 }
 
 const CustomText = ({ text, font , size = 14, color = "black"}) => {
-    const [fontLoaded, setFontLoaded] = useState(false);
+    // const [fontLoaded, setFontLoaded] = useState(false);
 
-    useEffect(() => {
-        const loadFonts = async () => {
-            await loadCustomFonts();
-            setFontLoaded(true);
+    // useEffect(() => {
+    //     const loadFonts = async () => {
+    //         await loadCustomFonts();
+    //         setFontLoaded(true);
+    //     }
+    //     loadFonts();
+    // }, []);
+
+    const [fontsLoaded, fontError] = useFonts({
+        //'Inter-Black': require('./assets/fonts/Inter-Black.otf'),
+        'sans-light': require('../../assets/Open_Sans/static/OpenSans-Light.ttf'),
+        'sans-regular': require('../../assets/Open_Sans/static/OpenSans-Regular.ttf'),
+        'sans-semi-bold' : require('../../assets/Open_Sans/static/OpenSans-SemiBold.ttf'),
+        'loraBold' : require('../../assets/Lora/static/Lora-Bold.ttf'),
+        'loraRegular' : require('../../assets/Lora/static/Lora-Regular.ttf'),
+        'sans-bold' :  require('../../assets/Open_Sans/static/OpenSans-Bold.ttf'),
+      });
+    
+      const onLayoutRootView = useCallback(async () => {
+        if (fontsLoaded || fontError) {
+          await SplashScreen.hideAsync();
         }
-        loadFonts();
-    }, []);
+      }, [fontsLoaded, fontError]);
+    
+      if (!fontsLoaded && !fontError) {
+        return null;
+      }
 
     return (
-        <Text style={[styles[font]], {fontSize : size, color : color} }>
+        <Text onLayout={onLayoutRootView} style={ {fontFamily : font, fontSize : size, color : color} }>
             {text}
         </Text>
     );

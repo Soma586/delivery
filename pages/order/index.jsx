@@ -4,6 +4,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { useSelector, useDispatch } from "react-redux";
 import { addFood, removeFood } from "../../storeFeature/cartslice";
 import CTA from "../../components/CTA";
+import { blue } from "../../utility";
 
 const CheckoutItem = ({ dishName ="hello", price= "$19.99" , quantity = 1}) => {
 
@@ -27,9 +28,9 @@ const CheckoutItem = ({ dishName ="hello", price= "$19.99" , quantity = 1}) => {
         <View style={styles.invoice}>
 
             <View>
-                <CustomText text={dishName} font={"sans"} size={15}/>
+                <CustomText text={dishName} font={"sans-regular"} size={15} color={blue}/>
 
-                <CustomText text={price} font={"loaded"} size={14}/>
+                <CustomText text={price} font={"sans-semi-bold"} size={14} color={blue}/>
 
 
            
@@ -43,7 +44,7 @@ const CheckoutItem = ({ dishName ="hello", price= "$19.99" , quantity = 1}) => {
                     
                     
 
-                       <CustomText text={quantity} font={"loaded"} />
+                       <CustomText text={quantity} font={"sans-semi-bold"} color={blue} />
 
                     <TouchableHighlight onPress={addToCart}>
                         <AntDesign name={"pluscircle"} size={25} color="purple"/>
@@ -61,7 +62,7 @@ const OrderPage = () => {
 
 
         const food = useSelector( (state) => {
-            console.log(state)
+           
             return state.food})
 
 
@@ -88,29 +89,29 @@ const OrderPage = () => {
 
       <View>
 
-      <CustomText text={"Total"} font={"loraBold"} size={17} />
+      <CustomText text={"Total"} font={"loraBold"} size={17} color={blue} />
 
       <View style={styles.invoice}>
-        <CustomText text={"SubTotal"} font={"sans"} size={15} />
+        <CustomText text={"SubTotal"} font={"sans-regular"} size={15} color={blue}/>
 
-        <CustomText text={`$ ${subTotal}`} font={"sans"} size={15} />
+        <CustomText text={`$ ${subTotal}`} font={"sans-regular"} size={15} color={blue}/>
       </View>
       <View style={styles.invoice}>
-        <CustomText text={"SubTotal"} font={"sans"} size={15} />
+        <CustomText text={"SubTotal"} font={"sans-regular"} size={15}  color={blue}/>
 
-        <CustomText text={"$ 10.00"} font={"sans"} size={15} />
+        <CustomText text={"$ 10.00"} font={"sans-regular"} size={15}  color={blue}/>
       </View>
 
       <View style={styles.invoice}>
-        <CustomText text={"Delivery"} font={"sans"} size={15} />
+        <CustomText text={"Delivery"} font={"sans-regular"} size={15} color={blue}/>
 
-        <CustomText text={"$ 30.00"} font={"sans"} size={15} />
+        <CustomText text={"$ 30.00"} font={"sans-regular"} size={15} color={blue}/>
       </View>
       <View style={{ flexDirection : 'row', justifyContent : 'space-between' }}>
 
-        <CustomText text={"To Pay"} font={"sansBold"} size={17} />
+        <CustomText text={"To Pay"} font={"sans-bold"} size={17} color={blue}/>
 
-        <CustomText text={`$ ${subTotal}` } font={"sansBold"} size={17} />
+        <CustomText text={`$ ${subTotal}` } font={"sans-bold"} size={17} color={blue}/>
 
       </View>
 

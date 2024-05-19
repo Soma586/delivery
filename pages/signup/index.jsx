@@ -22,7 +22,7 @@ const SignUp = ({navigation}) => {
             </Pressable>
 
             <View> 
-                <CustomText text={"Welcome!"} font={"lora"} size={16} color={blue}/>
+                <CustomText text={"Welcome!"} font={"loraRegular"} size={16} color={blue}/>
 
                 <CustomText text={"Sign up"} font={"loraBold"} size={32} color={blue}/>
             </View>
@@ -46,11 +46,13 @@ const SignUp = ({navigation}) => {
 
 
             <View style={{flexDirection : 'row'}}>
-            <Text>Already have an account?</Text>
+            {/* <Text>Already have an account?</Text> */}
+            <CustomText text="Already have an account? " font="sans-light"/>
 
 
             <Pressable onPress={() => navigation.goBack()}>
-                <Text style={{color : purple}}>Sign In</Text>
+                {/* <Text style={{color : purple}}>Sign In</Text> */}
+                <CustomText text={"Sign In"} color={purple} font={"sans-semi-bold"}/>
             </Pressable>
             </View>
             

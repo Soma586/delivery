@@ -30,7 +30,7 @@
       [
       "expo-font",
       {
-        "fonts": ["./assets/Poppins/Poppins-Regular.ttf"]
+        "fonts": ["./assets/Lora/static/Lora-Bold.ttf",  "./assets/Open_Sans/static/OpenSans-Regular.ttf", "./assets/Open_Sans/static/OpenSans-SemiBold.ttf", "./assets/Open_Sans/static/OpenSans-Bold.ttf", "./assets/Open_Sans/static/OpenSans-Light.ttf"]
       }
     ]
   ]

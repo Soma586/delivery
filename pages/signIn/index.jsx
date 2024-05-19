@@ -14,7 +14,7 @@ export const Input = ({label, placeholder, handleChange}) => {
     return (
         <View style={{marginBottom : 20}}>
             <View style={{marginBottom : 4}}>
-                <CustomText text={label} font={"lora"} size={14} color={blue}/>
+                <CustomText text={label} font={'loraRegular'} size={14} color={blue}/>
             </View>
             
 
@@ -47,10 +47,10 @@ const SignIn = ( {navigation}) => {
 
 
             <View style={styles.signContainer}>
-            {/* <Text style={styles.welcome}>Hello again!</Text> */}
+
 
             <View style={{marginBottom : 15}}>
-            <CustomText text={"Hello again!"} size={35} font={"loraBold"} color={blue}/>
+            <CustomText text={"Hello again"} size={35} font="loraBold" color={blue}/>
             </View>
            
 
@@ -63,17 +63,15 @@ const SignIn = ( {navigation}) => {
 
 
             <CTA title="Login" handlePress={() => navigation.navigate('Tab')}/>
-            <Text>Forgot your password?</Text>
+            <CustomText text={"Forgot your passwosrd"} font="sans-light"/>
 
 
 
-            <View style={{flexDirection : 'row'}}>  
-                 <Text>Don't have an account?</Text>
+            <View style={{flexDirection : 'row', alignItems : 'center'}}>  
+                 <CustomText text={"Don't have an account? "} font="sans-light"/>
 
             <Pressable onPress={() => navigation.navigate('SignUp') }>
-                <Text style={{color : purple}}>
-                    SignUps
-                </Text>
+                <CustomText text="SignUp" color={purple} font={"sans-semi-bold"}/>
             </Pressable>
 
             </View>

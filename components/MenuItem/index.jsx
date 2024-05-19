@@ -3,6 +3,7 @@ import { AntDesign } from '@expo/vector-icons'
 import CustomText from '../CustomText'
 import { useDispatch } from 'react-redux'
 import { addFood } from '../../storeFeature/cartslice'
+import { blue, grey } from '../../utility'
 
 
 
@@ -35,12 +36,12 @@ const MenuItem = ({title= "Dish name", img, detail="lorem ipsum", price=14.90}) 
 
                 
                 {/* <Text>{title}</Text> */}
-                <CustomText text={title} font="sans" size={17}/>
+                <CustomText text={title} font="sans-regular" size={17} color={blue}/>
                 
-                <CustomText text={detail} font="sans" size={13}/>
+                <CustomText text={detail} font="sans-regular" size={13} color={grey}/>
                
 
-                <CustomText text={ `$ ${price}`} font="ssBold" size={17}/>
+                <CustomText text={ `$ ${price}`} font="sans-semi-bold" size={17}/>
                 
                 </View>
 
