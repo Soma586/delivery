@@ -17,11 +17,12 @@ import FilterPage from './pages/filters';
 import SearchPage from './pages/search';
 import RestaurantPage from './pages/restaurantPage';
 import OrderPage from './pages/order';
+import MapPage from './pages/mappage';
 import CheckoutPage from './pages/checkout';
 import Success from './pages/success';
 import { Ionicons, FontAwesome5, AntDesign, Feather} from '@expo/vector-icons'
 import Slider from '@react-native-community/slider';
-
+import Map from './pages/mappage'
 //import RangeSlider, { Slider } from "react-native-range-slider-expo";
 //SplashScreen.preventAutoHideAsync()
 
@@ -185,14 +186,14 @@ export default function App() {
             <Ionicons name="home-outline" size={24}  color={color}/>
           )}}
         />
-        <Tab.Screen 
+        {/* <Tab.Screen 
         name="Rest" 
         component={RestaurantPage}
         options={{
           tabBarIcon: ({color}) => (
             <FontAwesome5 name="clipboard-list" size={24}  color={color}/>
           )}}
-        />
+        /> */}
         
         <Tab.Screen 
         name="Order" 
@@ -216,7 +217,7 @@ export default function App() {
 
       <Tab.Screen 
          name="test" 
-         component={Test}
+         component={Map}
          options={{
           tabBarIcon: ({color}) => (
             <Feather name="bell" size={24}  color={color}/>
@@ -248,6 +249,7 @@ export default function App() {
         <Stack.Screen name="Tab" component={Tabs} />
         <Stack.Screen name="Filter" component={FilterPage}  options={{ presentation: 'modal' }} />
         <Stack.Screen name="RestaurantPage" component={RestaurantPage}  />
+        <Stack.Screen name="MapPage" component={MapPage}  />
         </Stack.Navigator>
         </NavigationContainer>
     </Provider>

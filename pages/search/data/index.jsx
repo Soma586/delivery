@@ -28,9 +28,23 @@ export const data = [
        type : 'Mexican',
        rating : "4.9" ,
        pic : chiptole,
+       coordinate : [
+           {
+            latitude : 40.8694152,
+            longitude : -73.826114
+           },
+           {
+            latitude : 40.8759543,
+            longitude : -73.8358455
+           },
+           {
+            latitude : 40.8943563,
+            longitude : -73.8231445,
+           },
+       ],
        menu : [
            { 
-               dish : "burritoBowl",
+               dish : "BurritoBowl",
                price : 12.99,
                img : burritoBowl
            },
@@ -74,6 +88,28 @@ export const data = [
         rating : "4.1" ,
         type : 'burgers',
         pic : burgerKing,
+        coordinate : [
+            {
+                latitude: 40.709482,
+                longitude: -74.01164,
+            },
+            {
+                latitude: 40.705464,
+                longitude: -74.011004,
+            },
+            {
+                latitude: 40.718515,
+                longitude: -73.986759,
+            },
+            {
+                latitude: 40.866497,
+                longitude: -73.825773,
+            },
+            {
+                latitude: 40.900726,
+                longitude: -73.820404,
+            }
+        ],
         menu : [
             { 
                 dish : "Apple pie",
@@ -96,15 +132,38 @@ export const data = [
         rating : "4.1" ,
         pic : mcdonalds,
         type : "burgers",
+        coordinate : [
+            {
+                latitude: 40.8690376,
+                longitude: -73.8305321,
+            },
+            {
+                latitude: 40.8729804,
+                longitude: -73.852458,
+            },
+            {
+                latitude: 40.8854878,
+                longitude: -73.8264929,
+            },
+            {
+                latitude: 40.866497,
+                longitude: -73.825773,
+            },
+            {
+                latitude: 40.900726,
+                longitude: -73.820404,
+            }
+        ],
         menu : [
             { 
                 dish : "burgerMeal",
-                price : 12,
+                price : 12.50,
                 img : burgerMeals,
             },
             { 
              dish : "cookies",
-             price : cookies
+             price : 12.50,
+             img : cookies
          },
          { 
              dish : "pie",

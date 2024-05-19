@@ -6,6 +6,7 @@ import CustomText from '../../components/CustomText'
 import Burger from '../../assets/burger.webp'
 import { LinearGradient } from 'expo-linear-gradient'
 import MenuItem from '../../components/MenuItem'
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 
 
 
@@ -33,10 +34,11 @@ const RestaurantPage = (props) => {
 
     const  {
         //restaurant,
+        navigation
     } = props
 
-
-    const { menu, pic, restaurant} = props.route.params
+    console.log(props)
+    const { menu, pic, restaurant, coordinate} = props.route.params
 
     // console.log("hi there")
     // console.log({props})
@@ -134,6 +136,26 @@ const RestaurantPage = (props) => {
                     <EvilIcons name="clock" size={20}/>
              
                     <CustomText text={"test"} font={'sans'}/>
+                </View>
+
+
+
+                <View>
+
+                    <Text>WHAT Up</Text>
+
+                    <TouchableHighlight onPress={() => navigation.navigate({
+                        name : 'MapPage',
+                        params : { 
+                            coordinate : coordinate,
+                            name : restaurant
+                        }
+                        })}>
+                        <View>
+                            <Text>DIRECTIONS</Text>
+                        </View>
+
+                    </TouchableHighlight>
                 </View>
 
                 <CustomText text={"Feature Items"} font={'ssBold'} size={19}/>
