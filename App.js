@@ -244,7 +244,7 @@ export default function App() {
       <Stack.Navigator initialRouteName="Home" 
       screenOptions={{ headerShown: false }}
       >
-           <Stack.Screen name="Check" component={CheckoutPage} />
+
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="Tab" component={Tabs} />

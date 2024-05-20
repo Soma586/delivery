@@ -4,7 +4,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { useSelector, useDispatch } from "react-redux";
 import { addFood, removeFood } from "../../storeFeature/cartslice";
 import CTA from "../../components/CTA";
-import { blue } from "../../utility";
+import { blue, purple } from "../../utility";
 
 const CheckoutItem = ({ dishName ="hello", price= "$19.99" , quantity = 1}) => {
 
@@ -47,7 +47,7 @@ const CheckoutItem = ({ dishName ="hello", price= "$19.99" , quantity = 1}) => {
                        <CustomText text={quantity} font={"sans-semi-bold"} color={blue} />
 
                     <TouchableHighlight onPress={addToCart}>
-                        <AntDesign name={"pluscircle"} size={25} color="purple"/>
+                        <AntDesign name={"pluscircle"} size={25} color={purple}/>
                     </TouchableHighlight>
                     
                 </View>

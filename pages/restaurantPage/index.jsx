@@ -7,6 +7,7 @@ import {
   Dimensions,
   TouchableHighlight,
   ScrollView,
+  Pressable
 } from "react-native";
 import { useState } from "react";
 import { EvilIcons, AntDesign } from "@expo/vector-icons";
@@ -15,7 +16,8 @@ import Burger from "../../assets/burger.webp";
 import { LinearGradient } from "expo-linear-gradient";
 import MenuItem from "../../components/MenuItem";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
-import { blue, grey } from "../../utility";
+import { blue, grey, purple } from "../../utility";
+
 
 const FeatureItem = ({ dishName, price }) => {
   return (
@@ -96,6 +98,10 @@ const RestaurantPage = (props) => {
             height: "100%",
           }}
         />
+
+        <Pressable style={styles.arrowleft} onPress={() => navigation.goBack()}>
+        <AntDesign  name={"arrowleft"} size={30} color="white"/>
+        </Pressable>
 
         <View style={styles.restaurantName}>
           <CustomText
@@ -182,6 +188,11 @@ const styles = StyleSheet.create({
   foodContainer: {
     paddingHorizontal: 20,
   },
+  arrowleft : {
+    position : 'absolute',
+    top : 60,
+    left : 25,
+  },
   featuredImage: {
     width: 186,
     height: 126,
@@ -191,15 +202,16 @@ const styles = StyleSheet.create({
   restaurantName: {
     position: "absolute",
     bottom: 20,
+    left : 25
   },
   favoriteButton: {
-    backgroundColor: "purple",
+    backgroundColor: purple,
     alignSelf: "center",
     padding: 20,
     position: "absolute",
     borderRadius: 50,
     bottom: -25,
-    right: 0,
+    right: 25,
   },
   test: {
     // flex: 1,

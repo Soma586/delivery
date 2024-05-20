@@ -3,7 +3,7 @@ import { AntDesign } from '@expo/vector-icons'
 import CustomText from '../CustomText'
 import { useDispatch } from 'react-redux'
 import { addFood } from '../../storeFeature/cartslice'
-import { blue, grey } from '../../utility'
+import { blue, grey, purple } from '../../utility'
 
 
 
@@ -41,7 +41,7 @@ const MenuItem = ({title= "Dish name", img, detail="lorem ipsum", price=14.90}) 
                 <CustomText text={detail} font="sans-regular" size={13} color={grey}/>
                
 
-                <CustomText text={ `$ ${price}`} font="sans-semi-bold" size={17}/>
+                <CustomText text={ `$ ${price}`} font="sans-semi-bold" size={17} color={blue}/>
                 
                 </View>
 
@@ -51,7 +51,7 @@ const MenuItem = ({title= "Dish name", img, detail="lorem ipsum", price=14.90}) 
             style={styles.menuIcon}
             onPress={addToCart}
             >
-                <AntDesign name={'pluscircle'} color={"purple"} size={30}/>
+                <AntDesign name={'pluscircle'} color={purple} size={30}/>
             </TouchableHighlight>
 
         </View>

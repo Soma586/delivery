@@ -18,7 +18,7 @@ import tea from "../../assets/bubble-tea.png";
 import burger from "../../assets/burger.png";
 import DiscoverItem from "../../components/discoverItem";
 import { blue } from "../../utility";
-import { Ionicons} from '@expo/vector-icons'
+import { Ionicons, AntDesign, Feather} from '@expo/vector-icons'
 import { data } from "./data";
 
 const CategoryBox = ({ label, icon }) => {
@@ -63,35 +63,63 @@ const SearchPage = ({navigation}) => {
 
 
   return (
+   
     <View style={styles.searchContainer}>
       {/* <Text>The Best Restaurents</Text> */}
 
-      <View style={{paddingHorizontal : 20}}>
+      <View style={{paddingHorizontal : 20, flex : 1, justifyContent :'space-around'}}>
 
-      <CustomText
-        text={"The best Restaurents"}
+        
+    <View style={{paddingTop : 30}}>
+
+        <View style={{marginBottom : 20}}>
+        <Feather name='menu' size={28} style={{marginBottom : 14}} color={blue}/>
+        <CustomText
+        text={"The best restaurents"}
         size={27}
         font={"loraBold"}
         color={blue}
       />
 
-      <TextInput style={styles.input} placeholder="search" />
+        </View>
+   
 
 
-        <Pressable onPress={() => navigation.navigate('Filter')}>
-            <Ionicons  name="filter" size={24}/>
+      <View>
+      <TextInput style={styles.input} placeholder="Search" />
+
+      <View style={styles.iconBox}>
+      <AntDesign name='search1' size={20} color={blue} />
+      <Pressable onPress={() => navigation.navigate('Filter')}>
+            <Ionicons  name="filter" size={24} color={blue}/>
         </Pressable>
-      
+      </View>
+     
 
-      <CustomText
+      </View>
+
+    </View>
+    
+      
+    <View >
+
+        <View  style={{flexDirection : 'row', justifyContent : 'space-between'}}>
+        <CustomText
       text={"Categories"}
       size={19}
-      font={"loraRegular"}
+      font={"loraBold"}
       color={blue}
       />
-      </View>
-   
-      <View >
+      <CustomText
+      text={"Show all"}
+      font={"sans-regular"}
+      color={blue}
+      />
+
+        </View>
+     
+
+        <View style={{marginTop : 20}}>
         <FlatList
           data={categoryList}
           renderItem={({ item }) => <CategoryBox {...item} />}
@@ -99,9 +127,15 @@ const SearchPage = ({navigation}) => {
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{ gap: 16 }}
         />
-      </View>
 
-      <View style={{ alignItems : 'center'}}>
+        </View>
+     
+      </View>
+      </View>
+   
+   
+
+      <View style={{ alignItems : 'center', flex : 1}}>
         <FlatList
           data={list}
           renderItem={({ item }) => <DiscoverItem navigation={navigation} {...item} />}
@@ -114,19 +148,30 @@ const SearchPage = ({navigation}) => {
         />
       </View>
     </View>
+   
   );
 };
 
 const styles = StyleSheet.create({
   searchContainer: {
-    flex: 1,
-    //justifyContent: 'space-around',
+    //flex: 1,
+    height : '100%',
+    justifyContent: 'space-around',
+  },
+  iconBox : {
+    flexDirection : 'row',
+    width : "100%",
+    justifyContent : 'space-between',
+    position : 'absolute',
+    top : 6,
+    paddingHorizontal : 10
   },
   input: {
-    borderColor: "black",
+    borderColor: "lightgrey",
     borderWidth: 1,
-    paddingVertical: 4,
+    paddingVertical: 8,
     borderRadius: 2,
+    paddingLeft : 40,
   },
   categoryBox: {
     width: 88,
@@ -134,11 +179,14 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     // borderWidth: 1,
     backgroundColor: "white",
-    alignItems : 'center'
+    alignItems : 'center',
+    //verticalAlign : 'center'
+    paddingTop : 24
   },
   categoryImage: {
-    width: 60,
-    height: 80,
+    width: 34,
+    height: 34,
+    marginBottom : 12
   },
 
   secoundColumn: {

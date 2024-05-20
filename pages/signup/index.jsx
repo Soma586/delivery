@@ -18,7 +18,7 @@ const SignUp = ({navigation}) => {
 
            
             <Pressable onPress={() => navigation.goBack()}>
-                <AntDesign name={"arrowleft"} size={30}/>
+                <AntDesign name={"arrowleft"} size={30} color={blue}/>
             </Pressable>
 
             <View> 

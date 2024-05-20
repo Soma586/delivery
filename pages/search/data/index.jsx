@@ -19,6 +19,7 @@ import sushi from '../../../assets/sushi.jpeg'
 import tacos from '../../../assets/tacos.jpeg'
 import unapizza from '../../../assets/unaPizza.jpeg'
 import wine from '../../../assets/wine.jpeg'
+import cakestore from '../../../assets/cakestore.avif'
 
 
 export const data = [
@@ -44,7 +45,7 @@ export const data = [
        ],
        menu : [
            { 
-               dish : "BurritoBowl",
+               dish : "Burrito Bowl",
                price : 12.99,
                img : burritoBowl
            },
@@ -189,7 +190,7 @@ export const data = [
              img : sushi
          },
          { 
-             dish : "eggroll",
+             dish : "Eggroll",
              price : 2.99,
              img : eggrolls,
          }
@@ -215,9 +216,10 @@ export const data = [
          }
         ]
      },   {
-        restaurant : 'Sweet-Genie Cakes',
+        restaurant : 'Genie Cakes',
         rating : "4.9" ,
         type :'Cake',
+        pic : cakestore,
         menu : [
             { 
                 dish : "Vanilla Cake",
