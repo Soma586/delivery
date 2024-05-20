@@ -149,6 +149,7 @@ const RestaurantPage = (props) => {
                 params: {
                   coordinate: coordinate,
                   name: restaurant,
+                  pic: pic
                 },
               })
             }

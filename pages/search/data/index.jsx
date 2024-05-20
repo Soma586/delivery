@@ -68,6 +68,20 @@ export const data = [
         pic : unapizza,
         free : true,
         type :'pizza',
+        coordinate : [
+            {
+             latitude : 40.8694152,
+             longitude : -73.826114
+            },
+            {
+             latitude : 40.8759543,
+             longitude : -73.8358455
+            },
+            {
+             latitude : 40.8943563,
+             longitude : -73.8231445,
+            },
+        ],
         menu : [
             { 
                 dish : "margrita",
@@ -88,6 +102,20 @@ export const data = [
         rating : "4.1" ,
         pic : shang,
         type :'Asian',
+        coordinate : [
+            {
+             latitude : 40.8694152,
+             longitude : -73.826114
+            },
+            {
+             latitude : 40.8759543,
+             longitude : -73.8358455
+            },
+            {
+             latitude : 40.8943563,
+             longitude : -73.8231445,
+            },
+        ],
         menu : [
             { 
                 dish : "Ramen",
@@ -201,6 +229,20 @@ export const data = [
         type : 'pizza',
         rating : "4.1" ,
         pic : pizzhut,
+        coordinate : [
+            {
+             latitude : 40.8694152,
+             longitude : -73.826114
+            },
+            {
+             latitude : 40.8759543,
+             longitude : -73.8358455
+            },
+            {
+             latitude : 40.8943563,
+             longitude : -73.8231445,
+            },
+        ],
         menu : [
             { 
                 dish : "pie",
@@ -224,6 +266,20 @@ export const data = [
         rating : "4.9" ,
         type :'Cake',
         pic : cakestore,
+        coordinate : [
+            {
+             latitude : 40.8694152,
+             longitude : -73.826114
+            },
+            {
+             latitude : 40.8759543,
+             longitude : -73.8358455
+            },
+            {
+             latitude : 40.8943563,
+             longitude : -73.8231445,
+            },
+        ],
         menu : [
             { 
                 dish : "Vanilla Cake",

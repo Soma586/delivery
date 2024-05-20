@@ -23,6 +23,8 @@ import Success from './pages/success';
 import { Ionicons, FontAwesome5, AntDesign, Feather} from '@expo/vector-icons'
 import Slider from '@react-native-community/slider';
 import Map from './pages/mappage'
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+
 //import RangeSlider, { Slider } from "react-native-range-slider-expo";
 //SplashScreen.preventAutoHideAsync()
 
@@ -238,7 +240,7 @@ export default function App() {
 
   return (
 
-
+<GestureHandlerRootView>
     <Provider store={store}>
       <NavigationContainer>
       <Stack.Navigator initialRouteName="Home" 
@@ -255,6 +257,7 @@ export default function App() {
         </Stack.Navigator>
         </NavigationContainer>
     </Provider>
+    </GestureHandlerRootView>
   )
 
  
