@@ -36,7 +36,7 @@ const RestaurantPage = (props) => {
     navigation,
   } = props;
 
-  const { menu, pic, restaurant, coordinate } = props.route.params;
+  const { menu, pic, restaurant, coordinate, free = false } = props.route.params;
 
   const [featureList, setFeatureList] = useState([
     {
@@ -104,12 +104,20 @@ const RestaurantPage = (props) => {
         </Pressable>
 
         <View style={styles.restaurantName}>
+
+          {free && 
+            <View style={styles.stamp}>
+                <CustomText text={"Free delivery"} color="white" font={'sans-semi-bold'} size={12}/>
+            </View>
+            }
+            <View style={{marginTop : 10}}>
           <CustomText
             text={restaurant}
             font={"loraBold"}
             size={40}
             color={"white"}
           />
+          </View>
         </View>
 
         <TouchableHighlight style={styles.favoriteButton}>
@@ -118,21 +126,23 @@ const RestaurantPage = (props) => {
       </View>
 
       <View style={styles.foodContainer}>
-        <View style={{ flex: 1, flexDirection: "row", alignItems: "center" }}>
-          <EvilIcons name="location" size={20} />
+        <View style={{ flex: 1, flexDirection: "row", alignItems: "center", marginTop : 5 }}>
+          <EvilIcons name="location" size={20} color={'grey'} />
 
-          <CustomText text={"test"} font={"sans-regular"} />
+          <CustomText text={"lorem ipsum New Street"} font={"sans-regular"} color={blue}/>
         </View>
-        <View style={{ flex: 1, flexDirection: "row", alignItems: "center" }}>
-          <EvilIcons name="clock" size={20} />
+        <View style={{ flex: 1, flexDirection: "row", alignItems: "center", marginTop : 5 }}>
+          <EvilIcons name="clock" size={20}  color={'grey'}/>
 
-          <CustomText text={"test"} font={"sans-regular"} />
+          <CustomText text={"12pm to 23pm -"} font={"sans-regular"} color={blue}/>
+          <CustomText text={" Open now"} font={"sans-regular"} color={"green"}/>
         </View>
 
         <View>
-          <Text>WHAT Up</Text>
-
+          
+        {/* <CustomText text={"Brunch and fusion food specialist"} font={"sans-regular"} color={blue}/> */}
           <TouchableHighlight
+          style={styles.direction}
             onPress={() =>
               navigation.navigate({
                 name: "MapPage",
@@ -143,18 +153,21 @@ const RestaurantPage = (props) => {
               })
             }
           >
-            <View>
-              <Text>DIRECTIONS</Text>
+            <View >
+              <CustomText text={"DIRECTIONS"} font="sans-semi-bold" color={blue}/>
             </View>
           </TouchableHighlight>
         </View>
 
-        <CustomText
+                <View style={{marginBottom : 14}}>
+                <CustomText
           text={"Feature Items"}
           font={"sans-semi-bold"}
           size={19}
           color={blue}
         />
+                </View>
+       
 
         {/* <FeatureItem dishName="ramen" price={"10.99"}/> */}
 
@@ -197,11 +210,12 @@ const styles = StyleSheet.create({
     width: 186,
     height: 126,
     borderRadius: 8,
+    marginBottom : 10
   },
   heroImage: {},
   restaurantName: {
     position: "absolute",
-    bottom: 20,
+    bottom: 36,
     left : 25
   },
   favoriteButton: {
@@ -213,12 +227,31 @@ const styles = StyleSheet.create({
     bottom: -25,
     right: 25,
   },
-  test: {
-    // flex: 1,
-    // justifyContent : 'center',
-    // alignItems : 'center',
-    //paddingHorizontal : 20,
-    //paddingLeft : 20,
+  stamp : {
+    backgroundColor : purple,
+    alignSelf :'flex-start',
+    borderRadius : 20,
+    paddingHorizontal : 20,
+    paddingVertical : 4,
+    //marginTop : -40
+
+  },
+  direction: {
+   
+    alignSelf : 'flex-start',
+    marginTop : 10,
+    marginBottom : 20,
+
+borderRadius: 8,
+
+//backgroundColor: '#007AFF',
+borderWidth : 1,
+borderColor : blue,
+
+paddingVertical: 10,
+
+paddingHorizontal: 20,
+
   },
 });
 

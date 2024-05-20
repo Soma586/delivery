@@ -3,9 +3,11 @@ import { useState, useRef } from "react";
 import {
   View,
   Text,
+  TouchableOpacity,
   TouchableHighlight,
   StyleSheet,
   Animated,
+  Pressable
 } from "react-native";
 //import RangeSlider, { Slider } from "react-native-range-slider-expo";
 import { Ionicons, FlatList } from "@expo/vector-icons";
@@ -17,56 +19,77 @@ import Slider from "@react-native-community/slider";
 
 const grey = "#C7CAD1";
 
-const CategorieButton = ({ label }) => {
+const CategorieButton = ({ label, handlePress , active}) => {
   return (
-    <TouchableHighlight
-      onPress={() => console.log("he")}
-      style={styles.categoryButton}
+    <TouchableOpacity
+      onPress={handlePress}
+      style={[styles.categoryButton,active && {backgroundColor : purple, borderColor : purple} ]}
       activeOpacity={0.6}
-      underlayColor="red"
+      //underlayColor="red"
     >
       {/* <Text>{label}</Text> */}
-      <CustomText text={label} color={grey} font={"sans-regular"} />
-    </TouchableHighlight>
+      <CustomText text={label} color={active ? "white" : grey} font={"sans-regular"} />
+    </TouchableOpacity>
   );
 };
 
-const OptionButton = ({ label = "Free Delivery", index }) => {
+const OptionButton = ({ label = "Free Delivery", handlePress, index, active }) => {
   return (
-    <TouchableHighlight style={styles.optionBuff}>
+    <TouchableOpacity style={styles.optionBuff} onPress={handlePress}>
       <View style={[ index%2 === 0 ? styles.optionButton : styles.optionButtonOdd]}>
         {/* <Text>{label}</Text> */}
         <CustomText
           text={label}
           font={"sans-regular"}
-          color={purple}
+          color={active ? purple : 'black'}
           size={18}
         />
 
-        <Ionicons name={"checkmark-sharp"} size={30} color={purple} />
+        { active &&
+        <Ionicons name={"checkmark-sharp"} size={22} color={purple} />
+        }
       </View>
-    </TouchableHighlight>
+    </TouchableOpacity>
   );
 };
 
 const FilterPage = () => {
   const [list, setList] = useState([
-    "vegan",
-    "Asian",
-    "Pizza",
-    "Gourment",
-    "Mexican",
-    "Soup",
+    { label : "Gourment",
+      active : false,
+    },
+    {label : "vegan",
+     active : false,
+    },
+     { label : "Asian",
+        active : false,
+    },
+     { label : "Pizza",
+        active : false,
+    },{
+        label : "Mexican",
+        active : false,
+    },{
+        label : "Soup",
+        active : false
+    }
   ]);
 
   const [options, setOptions] = useState([
-    "Free Delivery",
-    "Restaurant ticket",
-    "Glutten Free",
+      {
+        label : "Free Delivery",
+        active : false
+      },{
+        label : "Restaurant ticket",
+        active : false
+      },
+      {
+        label : "Glutten Free",
+        active : false
+
+      }  
   ]);
 
-  const [fromValue, setFromValue] = useState(0);
-  const [toValue, setToValue] = useState(0);
   const [value, setValue] = useState(0);
 
   const animatedValue = useRef(new Animated.Value(0)).current;
@@ -77,12 +100,57 @@ const FilterPage = () => {
     animatedValue.setValue(value);
   };
 
+
+  const handleCategories = (index) => {
+
+    let copy = [...list]
+
+    copy[index].active = !copy[index].active
+
+    setList(copy)
+
+  }
+
+  const handleOptions = (index) => {
+
+    let copy = [...options]
+
+    copy[index].active = !copy[index].active
+
+    setOptions(copy)
+
+  }
+
+  const handleReset = () => {
+
+    
+
+    const categories = [...list]
+    const resetOptions = [...options]
+
+
+    categories.forEach((item) => {
+        item.active = false
+    })
+
+    resetOptions.forEach((item) => {
+        item.active = false
+    })
+
+    setValue(0)
+    setList(categories)
+    setOptions(resetOptions)
+    animatedValue.setValue(0)
+
+
+  }
+
   const displayButtons = list.map((item, index) => {
-    return <CategorieButton key={index} label={item} />;
+    return <CategorieButton key={index} label={item.label} handlePress={() => handleCategories(index)}  active={item.active}/>;
   });
 
   const displayOptions = _.map(options, (item ,index) => {
-    return <OptionButton key={index} label={item}  index={index}/>;
+    return <OptionButton key={index} label={item.label}  index={index} handlePress={() => handleOptions(index)} active={item.active}/>;
   });
 
   return (
@@ -90,6 +158,7 @@ const FilterPage = () => {
       <View style={styles.header}>
         <CustomText text={"Filters"} size={22} font={"loraBold"} color={blue} />
 
+        <Pressable onPress={handleReset}>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
           <Ionicons name="refresh" size={16} />
           <CustomText
@@ -99,6 +168,7 @@ const FilterPage = () => {
             color={blue}
           />
         </View>
+        </Pressable>
       </View>
 
       <View style={styles.categoriesContainer}>
@@ -199,7 +269,7 @@ const styles = StyleSheet.create({
     //flex: 3,
   },
   categoryButton: {
-    borderRadius: 16,
+    borderRadius: 20,
     borderWidth: 1,
     borderColor: "#CDCDCD",
     alignSelf: "center",

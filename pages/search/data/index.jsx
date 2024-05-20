@@ -29,6 +29,7 @@ export const data = [
        type : 'Mexican',
        rating : "4.9" ,
        pic : chiptole,
+       free : true,
        coordinate : [
            {
             latitude : 40.8694152,
@@ -62,25 +63,46 @@ export const data = [
        ]
     },
     {
-        restaurant : 'Pizza Hut',
-        type : 'pizza',
-        rating : "4.1" ,
-        pic : pizzhut,
+        restaurant : 'UnaPizza',
+        rating : "5.0" ,
+        pic : unapizza,
+        free : true,
+        type :'pizza',
         menu : [
             { 
-                dish : "pie",
-                price : 12.99,
-                img : margherita
+                dish : "margrita",
+                price : 10.99,
             },
             { 
-             dish : "cookies",
-             price : 12.99,
-             img : cookies
+             dish : "wine",
+             price : 5.99,
          },
          { 
-             dish : "cake",
+             dish : "Marinara",
+             price : 10.99,
+         }
+        ]
+     },
+     {
+        restaurant : 'Shangeri-la',
+        rating : "4.1" ,
+        pic : shang,
+        type :'Asian',
+        menu : [
+            { 
+                dish : "Ramen",
+                price : 10.99,
+                img : ramen
+            },
+            { 
+             dish : "Sushi",
+             price : 5.99,
+             img : sushi
+         },
+         { 
+             dish : "Eggroll",
              price : 2.99,
-             img : cupcakes
+             img : eggrolls,
          }
         ]
      },
@@ -173,49 +195,31 @@ export const data = [
          }
         ]
      },
+ 
      {
-        restaurant : 'Shangeri-la',
+        restaurant : 'Pizza Hut',
+        type : 'pizza',
         rating : "4.1" ,
-        pic : shang,
-        type :'Asian',
+        pic : pizzhut,
         menu : [
             { 
-                dish : "Ramen",
-                price : 10.99,
-                img : ramen
+                dish : "pie",
+                price : 12.99,
+                img : margherita
             },
             { 
-             dish : "Sushi",
-             price : 5.99,
-             img : sushi
+             dish : "cookies",
+             price : 12.99,
+             img : cookies
          },
          { 
-             dish : "Eggroll",
+             dish : "cake",
              price : 2.99,
-             img : eggrolls,
+             img : cupcakes
          }
         ]
      },
-     {
-        restaurant : 'UnaPizza',
-        rating : "5.0" ,
-        pic : unapizza,
-        type :'pizza',
-        menu : [
-            { 
-                dish : "margrita",
-                price : 10.99,
-            },
-            { 
-             dish : "wine",
-             price : 5.99,
-         },
-         { 
-             dish : "Marinara",
-             price : 10.99,
-         }
-        ]
-     },   {
+      {
         restaurant : 'Genie Cakes',
         rating : "4.9" ,
         type :'Cake',
