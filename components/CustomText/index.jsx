@@ -18,7 +18,7 @@ const loadCustomFonts = async () => {
     });
 }
 
-const CustomText = ({ text, font , size = 14, color = "black"}) => {
+const CustomText = ({ text, font , size = 14, color = "black" , spacing = false}) => {
     // const [fontLoaded, setFontLoaded] = useState(false);
 
     // useEffect(() => {
@@ -50,7 +50,7 @@ const CustomText = ({ text, font , size = 14, color = "black"}) => {
       }
 
     return (
-        <Text onLayout={onLayoutRootView} style={ {fontFamily : font, fontSize : size, color : color} }>
+        <Text onLayout={onLayoutRootView} style={ [{fontFamily : font, fontSize : size, color : color}, spacing && { letterSpacing : 3}] }>
             {text}
         </Text>
     );
@@ -68,7 +68,8 @@ const styles = StyleSheet.create({
         fontFamily : 'open-sans-bold'
     },
     ssBold : {
-        fontFamily : 'open-sans-semi-bold'
+        fontFamily : 'open-sans-semi-bold',
+        
     },
     loraBold : {
         fontFamily : 'loraBold'

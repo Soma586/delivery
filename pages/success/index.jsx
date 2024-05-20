@@ -3,6 +3,7 @@ import packageItem from '../../assets/package.png'
 import CustomText from '../../components/CustomText'
 import CTA from '../../components/CTA'
 import { useState, useEffect, useRef } from 'react'
+import { blue } from '../../utility'
 
 
 
@@ -76,13 +77,13 @@ const Success = () => {
         <View>
             
 
-            <View style={{alignItems : 'center'}}>
+            <View style={{alignItems : 'center', marginBottom : 50}}>
             <Image
             source={packageItem}
             />
-                <CustomText text={"Order was Successful"} size={28} font={"loraBold"}/>
+                <CustomText text={"Order was Successful"} size={28} font={"loraBold"} color={blue}/>
 
-                <CustomText text={"Check the status of your order in the Orders Section"} size={16} font={"sans"}/>
+                <CustomText text={"Check the status of your order in the Orders Section"} size={16} font={"sans-regular"}/>
             </View>
            
 
@@ -107,7 +108,8 @@ const styles = StyleSheet.create({
         //flex : 1,
         paddingTop : 150,
         justifyContent :  'space-around',
-        alignItems : 'center'
+        alignItems : 'center',
+        
 
     }
 

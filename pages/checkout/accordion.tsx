@@ -17,10 +17,12 @@ import paypal from '../../assets/paypal.png';
 import mastercard from '../../assets/mastercard.jpg';
 import visa from '../../assets/visa.png'
 import home from '../../assets/home.png'
+import CustomText from '../../components/CustomText';
+import { blue } from '../../utility';
 
 
 
-const Accordion = ({value, type, Component}) => {
+const Accordion = ({index, value, type, Component}) => {
   const listRef = useAnimatedRef();
   const heightValue = useSharedValue(0);
   const open = useSharedValue(false);
@@ -68,7 +70,7 @@ const Accordion = ({value, type, Component}) => {
 
 
   return (
-    <View style={styles.container}>
+    <View style={[index%2 === 0  ? styles.container : styles.containerodd]}>
       <Pressable
         onPress={() => {
           if (heightValue.value === 0) {
@@ -82,7 +84,8 @@ const Accordion = ({value, type, Component}) => {
           open.value = !open.value;
         }}
         style={styles.titleContainer}>
-        <Text style={styles.textTitle}>{value.title}</Text>
+        {/* <Text style={styles.textTitle}>{value.title}</Text> */}
+        <CustomText text={value.title}  font={"sans-semi-bold"} color={blue} size={13} spacing={true}/>
         <Chevron progress={progress} />
       </Pressable>
       <Animated.View style={heightAnimationStyle}>
@@ -132,14 +135,21 @@ export default Accordion;
 const styles = StyleSheet.create({
   container: {
     //backgroundColor: '#E3EDFB',
-    marginHorizontal: 10,
-    marginVertical: 10,
+    // marginHorizontal: 10,
+    // marginVertical: 10,
     //borderRadius: 14,
     //borderWidth: 1,
     borderTopWidth : 1,
     borderBottomWidth : 1,
-    borderColor: 'grey',
+    borderColor: 'lightgrey',
     overflow: 'hidden',
+  },
+  containerodd :{
+    // borderTopWidth : 1,
+    // borderBottomWidth : 1,
+    // borderColor: 'lightgrey',
+    overflow: 'hidden',
+
   },
   textTitle: {
     fontSize: 16,

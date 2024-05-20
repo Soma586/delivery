@@ -16,19 +16,19 @@ export type Category = {
   
   const data= [
     {
-      title: 'Payment Method',
-      content: ['**** **** **** 0025', 'Tarik.Mulholland@gmail.com', '**** **** **** 0947'],
+      title: 'PAYMENT METHOD',
+      content: ['**** **** **** 0025', 'John.Wick@gmail.com', '**** **** **** 0947'],
       contentNested: [],
       type: 'regular',
     },
     {
-      title: 'Delivery Address',
+      title: 'DELIVERY ADDRESS',
       content: ['Home', 'Work'],
       contentNested: [],
       type: 'regular',
     },
     {
-      title: 'Delivery Method',
+      title: 'DELIVERY METHOD',
       content: ['Content Category 1', 'Content Category 2', 'Content Category 3'],
       contentNested: [],
       type: 'regular',

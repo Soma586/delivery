@@ -15,6 +15,8 @@ import Accordion from './accordion';
 import paypal from '../../assets/paypal.png'
 import home from '../../assets/home.png'
 import CTA from '../../components/CTA';
+import { blue } from '../../utility';
+import { AntDesign } from '@expo/vector-icons';
 
 
 const PayMethod = ({icon = home ,text, highlight , handlePress}) => {
@@ -28,9 +30,10 @@ const PayMethod = ({icon = home ,text, highlight , handlePress}) => {
             <Image
             source={icon}
             style={{width : 33, height : 22, marginRight : 10}}
+            resizeMode="contain"
             />
 
-            <Text>{text}</Text>
+           <CustomText text={text} font={"sans-regular"} color={blue}/>
 
         </View>
         </TouchableWithoutFeedback>
@@ -56,7 +59,7 @@ const DeliveryAddress = () => {
 }
 
 
-const CheckoutPage = () => {
+const CheckoutPage = ({navigation}) => {
 
 
 
@@ -66,17 +69,33 @@ const CheckoutPage = () => {
 
 
     return (
-        <View style={{flex : 1, paddingHorizontal : 20}}>
+        <View style={{height : "100%", paddingTop : 40, paddingBottom : 40}}>
+
+       
+        <View style={styles.checkoutContainer}>
             {/* <Text>Checkout</Text> */}
-            <ScrollView showsVerticalScrollIndicator={false}>
-        {data.map((value, index) => {
-          return <Accordion value={value} key={index} type={value.type}  Component={PayMethod}/>;
+          
+            {/* <ScrollView style={{height : 100}} showsVerticalScrollIndicator={false}> */}
+            <View>
+            <AntDesign style={{marginBottom : 20}} name="arrowleft" size={30}/>
+            <CustomText text="Checkout" font="loraBold" size={27} color={blue}/>
+            </View>
+          
+            <View>
+          
+                <ScrollView style={{height : 500,}}>
+            {data.map((value, index) => {
+          return <Accordion value={value} key={index} index={index} type={value.type}  Component={PayMethod}/>;
         })}
-      </ScrollView>
+            </ScrollView>
+            </View>
+  
+      {/* </ScrollView> */}
             
 
             {/* <PayMethod highlight={true}/> */}
-            <CTA title={"Process Order"}/>
+            <CTA title={"Process Order"}  handlePress={() => navigation.navigate("Success")}/>
+        </View>
         </View>
     )
 }
@@ -84,6 +103,11 @@ const CheckoutPage = () => {
 
 const styles = StyleSheet.create({
 
+    checkoutContainer : {
+        paddingHorizontal : 20,
+        height : '100%',
+        justifyContent : 'space-around'
+    },
     payMethod : {
         flexDirection : 'row',
         padding : 20,
