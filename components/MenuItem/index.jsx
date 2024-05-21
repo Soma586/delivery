@@ -1,4 +1,4 @@
-import { View, Image, Text, StyleSheet, TouchableHighlight } from 'react-native'
+import { View, Image, Text, StyleSheet, TouchableHighlight, TouchableOpacity } from 'react-native'
 import { AntDesign } from '@expo/vector-icons'
 import CustomText from '../CustomText'
 import { useDispatch } from 'react-redux'
@@ -47,12 +47,12 @@ const MenuItem = ({ id, title= "Dish name", img, detail="lorem ipsum", price}) =
 
             </View>
 
-            <TouchableHighlight 
+            <TouchableOpacity 
             style={styles.menuIcon}
             onPress={addToCart}
             >
                 <AntDesign name={'pluscircle'} color={purple} size={30}/>
-            </TouchableHighlight>
+            </TouchableOpacity>
 
         </View>
         </View>

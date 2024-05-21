@@ -7,7 +7,8 @@ import {
   Dimensions,
   TouchableHighlight,
   ScrollView,
-  Pressable
+  Pressable,
+  Touchable
 } from "react-native";
 import { useState } from "react";
 import { EvilIcons, AntDesign } from "@expo/vector-icons";
@@ -15,7 +16,7 @@ import CustomText from "../../components/CustomText";
 import Burger from "../../assets/burger.webp";
 import { LinearGradient } from "expo-linear-gradient";
 import MenuItem from "../../components/MenuItem";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import { TouchableOpacity, TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { blue, grey, purple } from "../../utility";
 
 
@@ -40,11 +41,11 @@ const RestaurantPage = (props) => {
 
   const [featureList, setFeatureList] = useState([
     {
-      dishName: "naruto",
+      dishName: "Pizza",
       price: 10.99,
     },
     {
-      dishName: "one piece",
+      dishName: "Ice cream",
       price: 10.99,
     },
     {
@@ -60,11 +61,11 @@ const RestaurantPage = (props) => {
       price: 11.5,
     },
     {
-      dishName: "pokemon",
+      dishName: "Rice ball",
       price: 7.11,
     },
     {
-      dishName: "blue lock",
+      dishName: "Rice and chicken",
       price: 10.11,
     },
     {
@@ -73,8 +74,17 @@ const RestaurantPage = (props) => {
     },
   ]);
 
+  const [favorite, setFavorite] = useState(false)
+
+  console.log("hols")
+
+  const handleFavorite = () => {
+
+    setFavorite(!favorite)
+  }
+
   return (
-    <ScrollView style={styles.test}>
+    <ScrollView style={styles.test} showsVerticalScrollIndicator={false}>
       <View style={{ position: "relative" }}>
         <Image
           //source={require('../../assets/local.jpeg')}
@@ -120,9 +130,18 @@ const RestaurantPage = (props) => {
           </View>
         </View>
 
-        <TouchableHighlight style={styles.favoriteButton}>
-          <AntDesign name={"hearto"} color="white" size={20} />
-        </TouchableHighlight>
+        {/* <TouchableOpacity onPress={handleFavorite}>
+            <Text>HOLLLLLA</Text>
+        </TouchableOpacity> */}
+
+        <TouchableOpacity style={styles.favoriteButton} onPress={handleFavorite}>
+            {favorite ? (
+                <AntDesign name={'heart'} color="white" size={20} />
+            ) : (
+                <AntDesign name={'hearto'} color="white" size={20} />
+            )}
+          
+        </TouchableOpacity>
       </View>
 
       <View style={styles.foodContainer}>
@@ -153,6 +172,7 @@ const RestaurantPage = (props) => {
                 },
               })
             }
+            underlayColor={purple}
           >
             <View >
               <CustomText text={"DIRECTIONS"} font="sans-semi-bold" color={blue}/>
@@ -176,6 +196,7 @@ const RestaurantPage = (props) => {
           data={featureList}
           renderItem={({ item }) => <FeatureItem {...item} />}
           horizontal={true}
+          showsHorizontalScrollIndicator={false}
           contentContainerStyle={{ gap: 16 }}
           //columnWrapperStyle={{gap : 20}}
         />
@@ -227,6 +248,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     bottom: -25,
     right: 25,
+    zIndex :10
   },
   stamp : {
     backgroundColor : purple,

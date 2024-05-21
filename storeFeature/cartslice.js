@@ -59,7 +59,7 @@ export const cartSlice = createSlice({
 
           //state.total = state.total + calculateTotal(action.payload.price)
          // debugger
-         //let result = state.total + action.payload.price
+          let result = state.total + action.payload.price
           state.total = Number(result.toFixed(2))
 
             //state.food.push(food)

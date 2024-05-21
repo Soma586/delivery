@@ -1,5 +1,6 @@
 import {
   TouchableHighlight,
+  TouchableOpacity,
   Text,
   StyleSheet,
   ImageBackground,
@@ -13,7 +14,7 @@ const DiscoverItem = (props) => {
   const { navigation, pic, restaurant, rating = "4.5", index } = props;
 
   return (
-    <TouchableHighlight
+    <TouchableOpacity
       style={index % 2 !== 0 ? styles.secondColumn : null}
       onPress={() =>
         navigation.navigate({
@@ -75,7 +76,7 @@ const DiscoverItem = (props) => {
           </View>
         </View>
       </ImageBackground>
-    </TouchableHighlight>
+    </TouchableOpacity>
   );
 };
 

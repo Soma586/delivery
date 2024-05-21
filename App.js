@@ -202,7 +202,7 @@ export default function App() {
         component={OrderPage}
         options={{
           tabBarIcon: ({color}) => (
-            <AntDesign name="hearto" size={24}  color={color}/>
+            <FontAwesome5 name="clipboard-list" size={24}  color={color}/>
           )}}
         
         />
@@ -213,7 +213,7 @@ export default function App() {
          component={FilterPage}
          options={{
           tabBarIcon: ({color}) => (
-            <Feather name="bell" size={24}  color={color}/>
+            <AntDesign name="hearto" size={24}  color={color}/>
           )}}
         />
 
@@ -254,6 +254,7 @@ export default function App() {
         <Stack.Screen name="RestaurantPage" component={RestaurantPage}  />
         <Stack.Screen name="MapPage" component={MapPage}  />
         <Stack.Screen name="Success" component={Success}  />
+        <Stack.Screen name="Checkout" component={CheckoutPage}  />
         </Stack.Navigator>
         </NavigationContainer>
     </Provider>
