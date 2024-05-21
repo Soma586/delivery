@@ -55,7 +55,7 @@ const Accordion = ({index, value, type, Component}) => {
 
     const copy = [...data]
 
-    console.log(copy)
+    
     copy.forEach((item) => {
       item.active = false
     })
@@ -65,8 +65,6 @@ const Accordion = ({index, value, type, Component}) => {
     setData(copy)
 
   }
-
-  console.log(data)
 
 
   return (
@@ -92,7 +90,7 @@ const Accordion = ({index, value, type, Component}) => {
         <Animated.View style={styles.contentContainer} ref={listRef}>
           {type === 'regular' &&
             data.map((v, i) => {
-              //console.log(v)
+             
               return (
                 // <View key={i} style={styles.content}>
                 //   <Component text={v}/>
