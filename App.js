@@ -24,59 +24,9 @@ import { Ionicons, FontAwesome5, AntDesign, Feather} from '@expo/vector-icons'
 import Slider from '@react-native-community/slider';
 import Map from './pages/mappage'
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-
-//import RangeSlider, { Slider } from "react-native-range-slider-expo";
-//SplashScreen.preventAutoHideAsync()
-
-
-
-
-
-
-// const Test = () => {
-
-//   const [fontsLoaded, fontError] = useFonts({
-//     'Poppins': require('./assets/Poppins/Poppins-Regular.ttf'),
-//   });
-
-//   const onLayoutRootView = useCallback(async () => {
-//     if (fontsLoaded || fontError) {
-//       await SplashScreen.hideAsync();
-//     }
-//   }, [fontsLoaded, fontError]);
-
-//   if (!fontsLoaded && !fontError) {
-//     return null;
-//   }
-//   return (
-//     <View style={styles.container} onLayout={onLayoutRootView}>
-
-//       <Image
-//       source={require('./assets/Logo.png')}
-//       />
-//       <Text style={{fontFamily: 'Poppins'}} >
-//         Live happier and healthier by learning the fundamentals of meditation and mindfulness</Text>
-
-//         <View style={styles.imagePlayground}>
-
-//           <Image
-//           source={require('./assets/Background.png')}
-//           style={styles.imageBG}
-//           />
-//         {/* <Image
-//         source={require('./assets/Yoga.png')}
-//           /> */}
-
-//          <Image
-//         source={require('./assets/Yoga.png')}
-//           />
-
-//         </View>
-     
-//     </View>
-//   );
-
-// }
+import { LogBox } from 'react-native';
+LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+LogBox.ignoreAllLogs()
 
 export default function App() {
 

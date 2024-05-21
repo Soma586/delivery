@@ -12,7 +12,7 @@ import CTA from "../../components/CTA";
 import CustomText from "../../components/CustomText";
 import { blue, purple } from "../../utility";
 
-export const Input = ({ label, placeholder, handleChange }) => {
+export const Input = ({ label, placeholder, handleChange, isSecure=false }) => {
   return (
     <View style={{ marginBottom: 20 }}>
       <View style={{ marginBottom: 4 }}>
@@ -23,6 +23,7 @@ export const Input = ({ label, placeholder, handleChange }) => {
         style={styles.inputText}
         placeholder={placeholder}
         borderWidth={2}
+        secureTextEntry={isSecure}
       />
     </View>
   );
@@ -54,7 +55,7 @@ const SignIn = ({ navigation }) => {
         <View>
           <Input label="Email" placeholder={"Enter your Email"} />
 
-          <Input label="Password" placeholder={"Enter your password"} />
+          <Input label="Password" placeholder={"Enter your password"}  isSecure={true}/>
         </View>
 
         <CTA title="Login" handlePress={() => navigation.navigate("Tab")} />

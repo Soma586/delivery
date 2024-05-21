@@ -35,7 +35,7 @@ const SignUp = ({navigation}) => {
                 <Input label={"Email"} placeholder={"Enter your email"}/>
 
 
-                <Input label={"Password"} placeholder={"Choose a password"}/>
+                <Input label={"Password"} placeholder={"Choose a password"} isSecure={true}/>
 
             </View>
       

@@ -39,7 +39,7 @@ const Accordion = ({index, value, type, Component}) => {
 
     return {
       item,
-      active : index === 0 ? true : false
+      active : false
     }
    
   })

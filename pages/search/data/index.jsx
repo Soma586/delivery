@@ -48,7 +48,7 @@ export const data = [
            { 
                id : 1,
                dish : "Burrito Bowl",
-               price : 10.00,
+               price : 10.99,
                img : burritoBowl
            },
            { 

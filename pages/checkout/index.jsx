@@ -77,13 +77,13 @@ const CheckoutPage = ({navigation}) => {
           
             {/* <ScrollView style={{height : 100}} showsVerticalScrollIndicator={false}> */}
             <View>
-            <AntDesign style={{marginBottom : 20}} name="arrowleft" size={30}/>
+            <AntDesign style={{marginBottom : 20}} name="arrowleft" size={30} color={blue}/>
             <CustomText text="Checkout" font="loraBold" size={27} color={blue}/>
             </View>
           
             <View>
           
-                <ScrollView style={{height : 500,}}>
+                <ScrollView style={{height : 500,}} showsVerticalScrollIndicator={false}>
             {data.map((value, index) => {
           return <Accordion value={value} key={index} index={index} type={value.type}  Component={PayMethod}/>;
         })}

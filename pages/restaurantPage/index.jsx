@@ -18,7 +18,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import MenuItem from "../../components/MenuItem";
 import { TouchableOpacity, TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { blue, grey, purple } from "../../utility";
-
+console.disableYellowBox = true;
 
 const FeatureItem = ({ dishName, price }) => {
   return (
@@ -76,7 +76,6 @@ const RestaurantPage = (props) => {
 
   const [favorite, setFavorite] = useState(false)
 
-  console.log("hols")
 
   const handleFavorite = () => {
 
