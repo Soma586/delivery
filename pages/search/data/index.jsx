@@ -46,16 +46,19 @@ export const data = [
        ],
        menu : [
            { 
+               id : 1,
                dish : "Burrito Bowl",
-               price : 12.99,
+               price : 10,
                img : burritoBowl
            },
            { 
+            id : 2,
             dish : "burrito",
             price : 12.99,
             img : burrito
         },
         { 
+            id : 3,
             dish : "tacos",
             price : 8.99,
             img : tacos
@@ -84,14 +87,20 @@ export const data = [
         ],
         menu : [
             { 
+                id : 4,
+                img : margherita,
                 dish : "margrita",
                 price : 10.99,
             },
             { 
+                id : 5,
+                img: wine,
              dish : "wine",
              price : 5.99,
          },
          { 
+             id : 6,
+             img: marinara,
              dish : "Marinara",
              price : 10.99,
          }
@@ -118,16 +127,19 @@ export const data = [
         ],
         menu : [
             { 
+                id : 7,
                 dish : "Ramen",
                 price : 10.99,
                 img : ramen
             },
             { 
+                id : 8,
              dish : "Sushi",
              price : 5.99,
              img : sushi
          },
          { 
+            id : 9,
              dish : "Eggroll",
              price : 2.99,
              img : eggrolls,
@@ -163,15 +175,19 @@ export const data = [
         ],
         menu : [
             { 
+                id : 10,
                 dish : "Apple pie",
-                price : applePie
+                price : 1.99,
+                img : applePie
             },
             { 
+                id : 11,
              dish : "Burger",
              price : 12.99,
              img : burgerMeals
          },
          { 
+            id : 12,
              dish : "Meal",
              price : 15.99,
              img : burgerMeals
@@ -207,16 +223,19 @@ export const data = [
         ],
         menu : [
             { 
+                id : 13,
                 dish : "burgerMeal",
                 price : 12.50,
                 img : burgerMeals,
             },
             { 
+                id : 14,
              dish : "cookies",
              price : 12.50,
              img : cookies
          },
          { 
+            id : 15,
              dish : "pie",
              price : 2.99,
              img : applePie
@@ -245,16 +264,19 @@ export const data = [
         ],
         menu : [
             { 
+                id : 16,
                 dish : "pie",
                 price : 12.99,
                 img : margherita
             },
             { 
+                id : 17,
              dish : "cookies",
              price : 12.99,
              img : cookies
          },
          { 
+            id : 19,
              dish : "cake",
              price : 2.99,
              img : cupcakes
@@ -282,16 +304,19 @@ export const data = [
         ],
         menu : [
             { 
+                id : 20,
                 dish : "Vanilla Cake",
                 price : 7.99,
                 img : cake
             },
             { 
+                id : 21,
              dish : "Cookies",
              price : 5.99,
              img : cookies,
          },
          { 
+             id : 22,
              dish : "cupcakes",
              price : 2.99,
              img : cupcakes

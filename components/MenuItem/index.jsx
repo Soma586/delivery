@@ -7,7 +7,7 @@ import { blue, grey, purple } from '../../utility'
 
 
 
-const MenuItem = ({title= "Dish name", img, detail="lorem ipsum", price=14.90}) => {
+const MenuItem = ({ id, title= "Dish name", img, detail="lorem ipsum", price}) => {
 
 
 
@@ -15,7 +15,7 @@ const MenuItem = ({title= "Dish name", img, detail="lorem ipsum", price=14.90}) 
 
     const addToCart = () => {
 
-        dispatch(addFood({ title, price}))
+        dispatch(addFood({id, title, price}))
     }
 
     return (

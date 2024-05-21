@@ -42,9 +42,9 @@ export const cartSlice = createSlice({
         addFood : (state, action) => {
 
 
-           const existingFood = state.food.find((item) => action.payload.title === item.data.title)
+           const existingFood = state.food.find((item) => action.payload.id === item.data.id)
 
-
+       
 
            if (existingFood) {
             // If the food item already exists, increase its quantity
@@ -58,7 +58,9 @@ export const cartSlice = createSlice({
           }
 
           //state.total = state.total + calculateTotal(action.payload.price)
-          state.total += action.payload.price
+         // debugger
+         //let result = state.total + action.payload.price
+          state.total = Number(result.toFixed(2))
 
             //state.food.push(food)
         },
@@ -66,16 +68,20 @@ export const cartSlice = createSlice({
             // state.food = state.food.filter((item) => {
             //     item.id !== action.payload
             // })
-            const index = state.food.findIndex(item => item.data.title === action.payload.title);
+            //debugger
+            const index = state.food.findIndex(item => item.data.id === action.payload.id);
       if (index !== -1) {
         if (state.food[index].data.quantity > 1) {
           state.food[index].data.quantity -= 1;
         } else {
+            console.log("WAM")
           state.food.splice(index, 1);
         }
       }
-
-      state.total -= calculateTotal(action.payload.price)
+     
+      let result = state.total - action.payload.price
+      state.total = Number(result.toFixed(2))
+      //console.log(`After : ${state.total} `)
         }
     }
 })

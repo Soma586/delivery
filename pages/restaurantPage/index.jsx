@@ -189,7 +189,7 @@ const RestaurantPage = (props) => {
         <View>
           {menu.map((item, index) => (
             <View key={index}>
-              <MenuItem title={item.dish} price={item.price} img={item.img} />
+              <MenuItem title={item.dish} price={item.price} img={item.img} id={item.id} />
             </View>
           ))}
         </View>

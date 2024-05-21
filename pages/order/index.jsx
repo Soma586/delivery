@@ -6,7 +6,7 @@ import { addFood, removeFood } from "../../storeFeature/cartslice";
 import CTA from "../../components/CTA";
 import { blue, purple } from "../../utility";
 
-const CheckoutItem = ({ dishName ="hello", price= "$19.99" , quantity = 1}) => {
+const CheckoutItem = ({id, dishName ="hello", price , quantity = 1}) => {
 
 
 
@@ -16,12 +16,12 @@ const CheckoutItem = ({ dishName ="hello", price= "$19.99" , quantity = 1}) => {
 
     const addToCart = () => {
 
-        dispatch(addFood({title : dishName, price }))
+        dispatch(addFood({title : dishName, price, id }))
     }
 
     const decreaseToCart = () => {
 
-        dispatch(removeFood({title : dishName}))
+        dispatch(removeFood({id : id, price}))
     }
 
     return ( 
@@ -68,13 +68,12 @@ const OrderPage = () => {
 
         const subTotal = useSelector((state) => state.total)
 
-       // console.log(food)
 
   return (
     <View style={styles.orderContainer}>
 
         <View>
-      <CustomText text={"order"} font={"loraBold"} size={27} color="blue" />
+      <CustomText text={"order"} font={"loraBold"} size={27} color={blue} />
 
 
 
@@ -82,7 +81,7 @@ const OrderPage = () => {
 
       {/* <CheckoutItem/> */}
       {food.map((item) => {
-          return <CheckoutItem dishName={item.data.title} quantity={item.data.quantity}/>
+          return <CheckoutItem id={item.data.id} price={item.data.price} dishName={item.data.title} quantity={item.data.quantity}/>
       })}
       </View>
 
